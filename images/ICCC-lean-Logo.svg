@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 359.7 119.5"
+   width="85.262222"
+   height="28.325926"
+   id="svg1"
+   sodipodi:docname="ICCC-lean-Logo.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.1054688"
+     inkscape:cx="78.08805"
+     inkscape:cy="34.938365"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">Neues Projekt</title>
+  <style
+     id="style1">
+		.s0 { fill: #000000 } 
+	</style>
+  <path
+     id="ICL ICCC "
+     class="s0"
+     aria-label="ICCC "
+     d="M 0,117.5 H 24.5 L 45.5,2 H 21 Z m 105.4,2 c 18.3,0 33.4,-7.3 43.3,-20.6 L 133.1,83 c -7,9.1 -15.9,13.7 -26.4,13.7 -19.6,0 -33.6,-15.2 -33.6,-36.9 0,-21.8 14,-37 33.6,-37 10.5,0 19.4,4.6 26.4,13.5 L 148.7,20.5 C 138.8,7.3 123.7,0 105.6,0 c -32.8,0 -57,24.9 -57,59.8 0,34.8 24.2,59.7 56.8,59.7 z m 105,0 c 18.3,0 33.4,-7.3 43.4,-20.6 L 238.1,83 c -7,9.1 -15.8,13.7 -26.3,13.7 -19.7,0 -33.7,-15.2 -33.7,-36.9 0,-21.8 14,-37 33.7,-37 10.5,0 19.3,4.6 26.3,13.5 L 253.8,20.5 C 243.8,7.3 228.7,0 210.6,0 c -32.8,0 -57,24.9 -57,59.8 0,34.8 24.2,59.7 56.8,59.7 z m 106,0 c 18.3,0 33.4,-7.3 43.3,-20.6 L 344.2,83 c -7.1,9.1 -16,13.7 -26.5,13.7 -19.6,0 -33.6,-15.2 -33.6,-36.9 0,-21.8 14,-37 33.6,-37 10.5,0 19.4,4.6 26.5,13.5 L 359.7,20.5 C 349.8,7.3 334.7,0 316.6,0 c -32.8,0 -57,24.9 -57,59.8 0,34.8 24.2,59.7 56.8,59.7 z" />
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 492.20001 240.19999"
+   width="116.66963"
+   height="56.936295"
+   id="svg1"
+   sodipodi:docname="ICL-Logo-new.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.1054688"
+     inkscape:cx="78.08805"
+     inkscape:cy="62.953459"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">Neues Projekt</title>
+  <style
+     id="style1">
+		.s0 { fill: #000000 } 
+	</style>
+  <path
+     id="ICL "
+     class="s0"
+     aria-label="ICL "
+     d="m 0,235.6 h 59.4 l 42,-231 H 42 Z m 216.6,4.6 c 37.5,0 68.4,-11.5 92.1,-42.9 l -35.1,-37.9 c -15,18.8 -32.4,26.7 -51.3,26.7 -32.1,0 -51.3,-20.8 -51.3,-51.8 0,-45.6 27,-80.2 67.8,-80.2 21,0 36.3,9.6 46.2,27.1 L 327.9,43.5 C 312.9,15.5 281.4,0 242.7,0 164.7,0 111,58.4 111,138.6 111,199 152.1,240.2 216.6,240.2 Z M 323,235.6 h 159.6 l 9.6,-51.8 H 392 L 424.4,4.6 H 365 Z" />
+</svg>
