@@ -4030,6 +4030,24 @@ body.is-preload #banner p {
 	box-shadow: inset 0 -1px 0 0 #010080, 0 1px 0 0 #010080;
 }
 
+.wrapper.style8 {
+	background-color: #343330;
+}
+
+.wrapper.style8:before,
+.wrapper.style8:after {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23343330%3B' /%3E%3C/svg%3E");
+}
+
+.wrapper.style8:before {
+	box-shadow: inset 0 -1px 0 0 #343330, 0 1px 0 0 #343330;
+}
+
+.wrapper.style8:after {
+	box-shadow: inset 0 -1px 0 0 #343330, 0 1px 0 0 #343330;
+}
+
+
 
 .wrapper.spotlight {
 	background-color: #1E3557;
