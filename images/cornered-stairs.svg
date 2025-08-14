@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1600"
+   height="1600"
+   viewBox="0 0 1600 1600"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="cornered-stairs.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.4361965"
+     inkscape:cx="769.14877"
+     inkscape:cy="863.14311"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <rect
+     fill="#d1d1d1"
+     width="1600"
+     height="800"
+     id="rect1"
+     x="0"
+     y="0" />
+  <polygon
+     fill="#bcbcbc"
+     points="800,100 0,200 0,800 1600,800 1600,200 "
+     id="polygon1" />
+  <polygon
+     fill="#a8a8a8"
+     points="800,200 0,400 0,800 1600,800 1600,400 "
+     id="polygon2" />
+  <polygon
+     fill="#939393"
+     points="800,300 0,600 0,800 1600,800 1600,600 "
+     id="polygon3" />
+  <path
+     id="polygon4"
+     transform="matrix(1.0028657,0,0,1.0028657,0,-1.1462724)"
+     style="fill:#7e7e7e"
+     d="M 1600,800 800,400 0,800 -27.480842,1042.3153 1620.6718,1024.0274 Z"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="polygon5"
+     transform="matrix(1.6662708,0,0,1.6662708,-531.87039,-333.13541)"
+     style="fill:#696969"
+     d="M 800,500 320,800 306.84293,948.5922 1289.8039,930.7061 1280,800 Z"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="polygon6"
+     transform="matrix(3.0071586,0,0,3.0071586,-1604.5806,-1204.2952)"
+     style="fill:#555555"
+     d="M 1066.7,800 800,600 533.3,800 l -8.44941,85.38459 551.12461,2.28709 z"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="polygon7"
+     transform="matrix(6.9731685,0,0,6.9731685,-4772.3115,-4181.218)"
+     style="fill:#404040"
+     d="M 914.3,800 800,700 684.1,800 l -4.91565,34.52049 238.37162,-0.65753 z"
+     sodipodi:nodetypes="cccccc" />
+</svg>
