@@ -284,6 +284,54 @@ z-index: 100;
 
 						</article>
 
+						<article class="product-gallery" data-gallery="studio1" style="position: relative;">
+
+  <!-- Erstes Bild -->
+  <a href="images/wear/Road-Urban-Collection1/front.png" class="glightbox" data-gallery="studio1" style="display: block;">
+    <img src="images/wear/Road-Urban-Collection1/front.png" alt="ICC Studio Collection Jersey"
+         style="width:100%; border-radius:8px; cursor: zoom-in;" />
+  </a>
+
+
+
+
+  <!-- Weitere Bilder -->
+  <a href="images/wear/Road-Urban-Collection1/modell.png" class="glightbox" data-gallery="studio1" style="display:none;">
+    <img src="images/wear/Road-Urban-Collection1/modell.png" alt="ICC Studio Collection Jersey back" />
+  </a>
+  <a href="images/wear/Road-Urban-Collection1/left.png" class="glightbox" data-gallery="studio1" style="display:none;">
+    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
+  </a>
+  <a href="images/wear/Road-Urban-Collection1/back.png" class="glightbox" data-gallery="studio1" style="display:none;">
+    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
+  </a>
+  
+  <a href="images/wear/Road-Urban-Collection1/right.png" class="glightbox" data-gallery="studio1" style="display:none;">
+    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
+  </a>
+
+  <div class="accordion-wrapper">
+  <div class="accordion-item">
+    <div class="accordion-header">Details</div>
+    <div class="panel">
+      <p>Premium Sportful Materialien, moderner Schnitt, atmungsaktiv.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">Preis</div>
+    <div class="panel">
+      <p>
+        Neo Jersey: 103 GBP<br>
+        Bodyfit Jersey: 119 GBP<br>
+        LTD Bibshort: 174 GBP
+      </p>
+    </div>
+  </div>
+</div>
+</article>
+
+
 						<article class="product-gallery" data-gallery="jersey2" style="position: relative;">
 
 							<a href="images/wear/jersey21.png" class="glightbox" data-gallery="jersey2"
@@ -478,6 +526,7 @@ z-index: 100;
 			selector: '.glightbox',
 			loop: true
 		});
+		
 
 		// Buttons dynamisch in jede product-gallery einfügen
 		document.querySelectorAll('.product-gallery').forEach(gallery => {
@@ -518,6 +567,14 @@ z-index: 100;
 			updateImage(0);
 		});
 
+		document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.classList.toggle('active');
+    const panel = header.nextElementSibling;
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
 	</script>
 
 
@@ -526,6 +583,32 @@ z-index: 100;
 </html>
 
 <style>
+	.accordion-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  margin: 6px 0;
+}
+
+.accordion-header:hover {
+  opacity: 0.7;
+}
+
+.panel {
+  display: none;
+  padding-left: 20px; /* Platz für Plus */
+  margin-bottom: 6px;
+}
+
+.accordion-header.active::before {
+  content: "▼\00a0";
+}
+
+.accordion-header:not(.active)::before {
+  content: "►\00a0";
+}
+	
 	body,
 	#banner,
 	#wrapper>header,
@@ -538,6 +621,7 @@ z-index: 100;
 		background-position: center, center !important;
 		background-attachment: fixed, fixed !important;
 	}
+	
 
 	/* Footer bekommt abweichende Hintergrundfarbe/-verlauf */
 	#footer {
@@ -558,13 +642,15 @@ z-index: 100;
 </style>
 
 <style>
+
+	
 	.weiterpfeil {
 		font-size: 1.5rem;
 		color: rgb(255, 255, 255);
 		cursor: pointer;
 		line-height: 1;
 		position: absolute;
-		top: 50%;
+		top: 8em;
 		transform: translateY(-50%);
 		user-select: none;
 	}
