@@ -86,7 +86,7 @@
 
 		<!-- Wrapper -->
 		<section id="wrapper">
-			
+
 			<header>
 				<div class="inner">
 					<h2>Club Wear & Gear</h2>
@@ -119,7 +119,9 @@
 
 
 
-					<img src="images/team-portrait-removebg2.png" alt="AI Generated Pic. Bing Image Creator 08/2025. Group Studio Portrait of People Presenting Road Bike Kit, MTB Jersey and Hoody. Navy colour with ICL Logo on chest." style="
+					<img src="images/team-portrait-removebg2.png"
+						alt="AI Generated Pic. Bing Image Creator 08/2025. Group Studio Portrait of People Presenting Road Bike Kit, MTB Jersey and Hoody. Navy colour with ICL Logo on chest."
+						style="
       position: absolute;
 right: 0;
 max-width: 100%;
@@ -286,50 +288,60 @@ z-index: 100;
 
 						<article class="product-gallery" data-gallery="studio1" style="position: relative;">
 
-  <!-- Erstes Bild -->
-  <a href="images/wear/Road-Urban-Collection1/front.png" class="glightbox" data-gallery="studio1" style="display: block;">
-    <img src="images/wear/Road-Urban-Collection1/front.png" alt="ICC Studio Collection Jersey"
-         style="width:100%; border-radius:8px; cursor: zoom-in;" />
-  </a>
+							<!-- Erstes Bild -->
+							<a href="images/wear/Road-Urban-Collection1/front.png" class="glightbox"
+								data-gallery="studio1" style="display: block;">
+								<img src="images/wear/Road-Urban-Collection1/front.png"
+									alt="ICC Studio Collection Jersey"
+									style="width:100%; border-radius:8px; cursor: zoom-in;" />
+							</a>
 
 
 
 
-  <!-- Weitere Bilder -->
-  <a href="images/wear/Road-Urban-Collection1/modell.png" class="glightbox" data-gallery="studio1" style="display:none;">
-    <img src="images/wear/Road-Urban-Collection1/modell.png" alt="ICC Studio Collection Jersey back" />
-  </a>
-  <a href="images/wear/Road-Urban-Collection1/left.png" class="glightbox" data-gallery="studio1" style="display:none;">
-    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
-  </a>
-  <a href="images/wear/Road-Urban-Collection1/back.png" class="glightbox" data-gallery="studio1" style="display:none;">
-    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
-  </a>
-  
-  <a href="images/wear/Road-Urban-Collection1/right.png" class="glightbox" data-gallery="studio1" style="display:none;">
-    <img src="images/wear/Road-Urban-Collection1/back.png" alt="ICC Studio Collection Bib Short" />
-  </a>
+							<!-- Weitere Bilder -->
+							<a href="images/wear/Road-Urban-Collection1/modell.png" class="glightbox"
+								data-gallery="studio1" style="display:none;">
+								<img src="images/wear/Road-Urban-Collection1/modell.png"
+									alt="ICC Studio Collection Jersey back" />
+							</a>
+							<a href="images/wear/Road-Urban-Collection1/left.png" class="glightbox"
+								data-gallery="studio1" style="display:none;">
+								<img src="images/wear/Road-Urban-Collection1/back.png"
+									alt="ICC Studio Collection Bib Short" />
+							</a>
+							<a href="images/wear/Road-Urban-Collection1/back.png" class="glightbox"
+								data-gallery="studio1" style="display:none;">
+								<img src="images/wear/Road-Urban-Collection1/back.png"
+									alt="ICC Studio Collection Bib Short" />
+							</a>
 
-  <div class="accordion-wrapper">
-  <div class="accordion-item">
-    <div class="accordion-header">Details</div>
-    <div class="panel">
-      <p>Premium Sportful Materialien, moderner Schnitt, atmungsaktiv.</p>
-    </div>
-  </div>
+							<a href="images/wear/Road-Urban-Collection1/right.png" class="glightbox"
+								data-gallery="studio1" style="display:none;">
+								<img src="images/wear/Road-Urban-Collection1/back.png"
+									alt="ICC Studio Collection Bib Short" />
+							</a>
 
-  <div class="accordion-item">
-    <div class="accordion-header">Preis</div>
-    <div class="panel">
-      <p>
-        Neo Jersey: 103 GBP<br>
-        Bodyfit Jersey: 119 GBP<br>
-        LTD Bibshort: 174 GBP
-      </p>
-    </div>
-  </div>
-</div>
-</article>
+							<div class="accordion-wrapper">
+								<div class="accordion-item">
+									<div class="accordion-header">Details</div>
+									<div class="panel">
+										<p>Premium Sportful Materialien, moderner Schnitt, atmungsaktiv.</p>
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header">Preis</div>
+									<div class="panel">
+										<p>
+											Neo Jersey: 103 GBP<br>
+											Bodyfit Jersey: 119 GBP<br>
+											LTD Bibshort: 174 GBP
+										</p>
+									</div>
+								</div>
+							</div>
+						</article>
 
 
 						<article class="product-gallery" data-gallery="jersey2" style="position: relative;">
@@ -524,9 +536,10 @@ z-index: 100;
 		// GLightbox initialisieren (wie gehabt)
 		const lightbox = GLightbox({
 			selector: '.glightbox',
-			loop: true
+			loop: true,
+			
 		});
-		
+
 
 		// Buttons dynamisch in jede product-gallery einfügen
 		document.querySelectorAll('.product-gallery').forEach(gallery => {
@@ -568,12 +581,12 @@ z-index: 100;
 		});
 
 		document.querySelectorAll('.accordion-header').forEach(header => {
-  header.addEventListener('click', () => {
-    header.classList.toggle('active');
-    const panel = header.nextElementSibling;
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-  });
-});
+			header.addEventListener('click', () => {
+				header.classList.toggle('active');
+				const panel = header.nextElementSibling;
+				panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+			});
+		});
 
 	</script>
 
@@ -583,32 +596,44 @@ z-index: 100;
 </html>
 
 <style>
+	.gslide img {
+  background: rgb(187, 186, 189); /* oder rgba(255,255,255,1) */
+  
+}
+
+.product-gallery img {
+  background: hsla(0, 0%, 0%, 0); /* weißer Hintergrund für transparente PNGs */
+ 
+  display: block;       /* entfernt kleine Abstände unter Bildern */
+}
+
 	.accordion-header {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  margin: 6px 0;
-}
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		user-select: none;
+		margin: 6px 0;
+	}
 
-.accordion-header:hover {
-  opacity: 0.7;
-}
+	.accordion-header:hover {
+		opacity: 0.7;
+	}
 
-.panel {
-  display: none;
-  padding-left: 20px; /* Platz für Plus */
-  margin-bottom: 6px;
-}
+	.panel {
+		display: none;
+		padding-left: 20px;
+		/* Platz für Plus */
+		margin-bottom: 6px;
+	}
 
-.accordion-header.active::before {
-  content: "▼\00a0";
-}
+	.accordion-header.active::before {
+		content: "▼\00a0";
+	}
 
-.accordion-header:not(.active)::before {
-  content: "►\00a0";
-}
-	
+	.accordion-header:not(.active)::before {
+		content: "►\00a0";
+	}
+
 	body,
 	#banner,
 	#wrapper>header,
@@ -621,7 +646,7 @@ z-index: 100;
 		background-position: center, center !important;
 		background-attachment: fixed, fixed !important;
 	}
-	
+
 
 	/* Footer bekommt abweichende Hintergrundfarbe/-verlauf */
 	#footer {
@@ -642,8 +667,6 @@ z-index: 100;
 </style>
 
 <style>
-
-	
 	.weiterpfeil {
 		font-size: 1.5rem;
 		color: rgb(255, 255, 255);
