@@ -162,3 +162,24 @@
       img.setAttribute('loading', 'lazy');
     });
   });
+
+  // =========================
+// Splide Slider Initialisierung
+// =========================
+document.addEventListener( 'DOMContentLoaded', function () {
+    var sliders = document.querySelectorAll('.splide');
+
+    sliders.forEach(function(slider){
+        new Splide(slider, {
+            type: 'loop',
+            perPage: 1,
+            perMove: 1,
+            arrows: true,
+            pagination: true,
+            gap: '1rem',
+            autoplay: true,
+            interval: 3000,
+            lazyLoad: 'nearby', // lädt aktuelle + vorherige/nächste Folie
+        }).mount();
+    });
+});

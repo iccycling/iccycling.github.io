@@ -4593,3 +4593,48 @@ background-image: url("../../images/cornered-stairs.svg");
 .faq-item.active .faq-answer {
 	display: block;
 }
+
+/* =========================
+  /* =========================
+   Splide Slider Styles
+   ========================= */
+/* =========================
+   Splide Slider Styles
+   ========================= */
+/* =========================
+   Splide Slider Styles
+   ========================= */
+
+/* Box-sizing & Padding reset */
+.splide,
+.splide * {
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Slide-Inhalt zentriert */
+.splide__slide {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    height: 55vh;           /* kleine Bildschirme */
+}
+
+/* Bilder proportional */
+.splide__slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;     /* nichts wird abgeschnitten */
+    display: block;
+
+	
+}
+
+/* Große Bildschirme */
+@media (min-width: 992px) {
+    .splide__slide {
+        height: 70vh;       /* größer auf Desktop */
+    }
+}
+
+
