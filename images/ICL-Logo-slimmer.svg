@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 241 119.5"
+   width="241"
+   height="119.5"
+   id="svg1"
+   sodipodi:docname="ICL-Logo-slimmer.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.73611111"
+     inkscape:cx="155.54717"
+     inkscape:cy="25.132075"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">IMPERIAL COLLEGE CYCLING CLUB</title>
+  <style
+     id="style1">
+		.s0 { fill: #000000 } 
+	</style>
+  <path
+     id="ICL"
+     class="s0"
+     aria-label="ICL"
+     d="M 0,117.5 H 24.4 L 45.4,2 H 21 Z m 105.2,2 c 18,0 33.3,-5.8 44.4,-20 L 135.1,83.3 c -7.7,9.3 -17.2,13.4 -27.9,13.4 -18.8,0 -29.3,-11.5 -29.3,-29 0,-24.9 15.3,-44.9 39,-44.9 11.5,0 19.9,4.8 25.3,13.5 L 159.7,20.5 C 152.2,7.3 137.1,0 118.5,0 79.5,0 53.2,29.9 53.2,69.3 c 0,29.7 19.9,50.2 52,50.2 z m 54.8,-2 h 76.9 L 241,95.7 H 188.3 L 205.4,2 H 181 Z" />
+</svg>
