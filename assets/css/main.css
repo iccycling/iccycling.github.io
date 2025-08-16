@@ -4610,6 +4610,7 @@ background-image: url("../../images/cornered-stairs.svg");
 .splide * {
     padding: 0 !important;
     box-sizing: border-box;
+	border-radius: 5px; 
 }
 
 /* Slide-Inhalt zentriert */
@@ -4634,6 +4635,28 @@ background-image: url("../../images/cornered-stairs.svg");
 @media (min-width: 992px) {
     .splide__slide {
         height: 70vh;       /* größer auf Desktop */
+    }
+}
+
+/* tooltip */
+
+.tooltip-follow {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    z-index: 9999;
+    white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+    .tooltip-follow {
+        display: none;
     }
 }
 

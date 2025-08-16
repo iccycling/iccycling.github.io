@@ -177,9 +177,37 @@ document.addEventListener( 'DOMContentLoaded', function () {
             arrows: true,
             pagination: true,
             gap: '1rem',
-            autoplay: true,
+            autoplay: false,
             interval: 3000,
             lazyLoad: 'nearby', // lädt aktuelle + vorherige/nächste Folie
         }).mount();
     });
 });
+
+//tooltip
+document.addEventListener("DOMContentLoaded", function () {
+    const imgContainer = document.querySelector('.img-tooltip-follow');
+
+    if (imgContainer) {
+        // Tooltip-Element erstellen
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip-follow';
+        tooltip.textContent = imgContainer.dataset.tooltip || '';
+        document.body.appendChild(tooltip);
+
+        imgContainer.addEventListener('mouseenter', () => {
+            tooltip.style.opacity = '1';
+        });
+
+        imgContainer.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+        });
+
+        imgContainer.addEventListener('mousemove', (e) => {
+            tooltip.style.left = (e.clientX + 12) + 'px';
+            tooltip.style.top = (e.clientY + 12) + 'px';
+        });
+    }
+});
+
+
