@@ -92,12 +92,15 @@
 <!-- Banner -->
 <section id="banner">
   <div class="inner">
-    <div class="logo">
-      <!-- Desktop / Tablet: volles Logo -->
-      <img src="images/Logos/Logo-Clubname.svg" alt="ICC Logo Full" class="logo-full" style="max-width: 100%; height: auto;" />
-      <!-- Mobile: nur Kürzel -->
-      <img src="images/Logos/Clubname.svg" alt="ICC Logo" class="logo-short" style="max-width: 100%; height: auto;" />
-    </div>
+   <div class="logo">
+  <picture>
+    <!-- Mobile: nur Kürzel -->
+    <source srcset="images/Logos/Clubname.svg" media="(max-width: 768px)">
+    <!-- Desktop / Tablet: volles Logo -->
+    <img src="images/Logos/Logo-Clubname.svg" alt="ICC Logo Full" style="max-width: 100%; height: auto;">
+  </picture>
+</div>
+
 
     <p>
       Student-led club for road and MTB riders. Powered by the Student Union. All levels welcome. Group rides, good vibes, and city-to-trail freedom.
@@ -327,6 +330,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		
 
 </body>
 
@@ -477,6 +481,7 @@
     font-size: 0.9rem; /* optional: Text kleiner auf Handy */
   }
 }
+
 
 
 </style>
