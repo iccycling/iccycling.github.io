@@ -89,24 +89,26 @@
 			</div>
 		</nav>
 
-		<!-- Banner -->
-		<section id="banner">
-			<div class="inner">
-				<div class="logo">
-					<img src="images/Logos/Logo-Clubname.svg" alt="ICC Logo"
-						style="max-width: 100%; height: auto; display: block;" />
-				</div>
+<!-- Banner -->
+<section id="banner">
+  <div class="inner">
+    <div class="logo">
+      <!-- Desktop / Tablet: volles Logo -->
+      <img src="images/Logos/Logo-Clubname.svg" alt="ICC Logo Full" class="logo-full" style="max-width: 100%; height: auto;" />
+      <!-- Mobile: nur Kürzel -->
+      <img src="images/Logos/Clubname.svg" alt="ICC Logo" class="logo-short" style="max-width: 100%; height: auto;" />
+    </div>
 
-				<p>
-  Student-led club for road and MTB riders. Powered by the Student Union. All levels welcome. Group rides, good vibes, and city-to-trail freedom.
-</p>
+    <p>
+      Student-led club for road and MTB riders. Powered by the Student Union. All levels welcome. Group rides, good vibes, and city-to-trail freedom.
+    </p>
 
+    <ul class="actions">
+      <li><a href="club.html#join" class="button primary">Join the Club</a></li>
+    </ul>
+  </div>
+</section>
 
-				<ul class="actions">
-					<li><a href="club.html#join" class="button primary">Join the Club</a></li>
-				</ul>
-			</div>
-		</section>
 
 
 
@@ -453,4 +455,28 @@
 			background-attachment: scroll, scroll !important;
 		}
 	}
+/*responsive logo*/
+/* Standard: Desktop / Tablet */
+.logo-full {
+  display: block;
+}
+.logo-short {
+  display: none;
+}
+
+/* Mobile: max-width 768px */
+@media (max-width: 768px) {
+  .logo-full {
+    display: none;  /* Volles Logo ausblenden */
+  }
+  .logo-short {
+    display: block; /* Nur Kürzel anzeigen */
+  }
+
+  #banner p {
+    font-size: 0.9rem; /* optional: Text kleiner auf Handy */
+  }
+}
+
+
 </style>
