@@ -9,8 +9,8 @@
 <head>
 	<title>Imperial College Cycling Club</title>
 	<link rel="icon" href="images/flavicon.ico" type="image/x-icon">
-	
-<meta http-equiv="Content-Security-Policy" content="
+
+	<meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
@@ -18,7 +18,7 @@
     img-src 'self' data:;
     connect-src 'self';
 ">
-<meta name="referrer" content="no-referrer">
+	<meta name="referrer" content="no-referrer">
 
 
 
@@ -321,19 +321,22 @@
 					<li class="icon solid fa-envelope">
 						<a href="mailto:cycle@imperial.ac.uk">cycle@imperial.ac.uk</a>
 					</li>
-					
+
 
 					<li class="icon brands fa-instagram">
 						<a href="https://instagram.com/iccycling" target="_blank" rel="noopener">@iccycling</a>
 					</li>
 				</ul>
 
-				<footer style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; font-size:14px; color:#a4a4a4; text-align:center; margin:2rem 0;">
-  <span>Created by Frederik Beck, Shahmir Durrani and others at ICCC. Template from <a href="http://html5up.net" target="_blank" rel="noopener" style="text-decoration:none;">HTML5 UP</a></span>
+				<footer
+					style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; font-size:14px; color:#a4a4a4; text-align:center; margin:2rem 0;">
+					<span>Created by Frederik Beck, Shahmir Durrani and others at ICCC. Template from <a
+							href="http://html5up.net" target="_blank" rel="noopener" style="text-decoration:none;">HTML5
+							UP</a></span>
 					<span>&copy; Imperial College Cycling Club 2025. All rights reserved.</span>
-  <span><a href="privacy.html" style="color:#8f77ed; text-decoration:none;">Privacy Notice</a></span>
-  
-</footer>
+					<span><a href="privacy.html" style="color:#8f77ed; text-decoration:none;">Privacy Notice</a></span>
+
+				</footer>
 
 
 			</div>
@@ -342,45 +345,48 @@
 
 		<!-- START: Modal Popup -->
 		<div id="welcomeModal" class="modal">
-			<div class="modal-content">
-				<span class="close-button">&times;</span>
-				<div style="text-align:center; margin-bottom:10px;">
-					<img src="images/Logos/ICCC.svg" alt="Imperial College Cycling Club Logo"
-						style="max-width:100px; height:auto;">
-				</div>
+    <div class="modal-content">
+        <video class="modal-bg-video" autoplay muted loop playsinline>
+            <source src="videos/modal-video.mp4" type="video/mp4">
+        </video>
 
-				<div
-					style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
-					🚧 Website Under Construction 🚧
-				</div>
-				<h2>Welcome to the Imperial College Cycling Club</h2>
-				<p>Our new website is live! 🚴‍♂️</p>
+        <div class="modal-inner">
+            <span class="close-button">&times;</span>
 
-				<ul>
-					<li>Join an active urban cycling community</li>
-					<li>Support for indoor training, Zwift & spin classes</li>
-					<li>Be part of a welcoming, social, and inclusive club</li>
-				</ul>
+            <div style="text-align:center; margin-bottom:10px;">
+                <img src="images/Logos/ICCC.svg" alt="Imperial College Cycling Club Logo"
+                    style="max-width:100px; height:auto;">
+            </div>
 
-				<p>Whether you ride roads, trails, or fixies — all are welcome!</p>
-				<p>Consider joining our committee and help shape the club.</p>
+            <div style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
+                🚧 Website Under Construction 🚧
+            </div>
 
-				<a href="club.html#join" class="join-button">Learn More</a>
+            <h2>Welcome to the Imperial College Cycling Club</h2>
+            <p>Our new website is live! 🚴‍♂️</p>
 
-				<!-- Cookie Hinweis -->
-				<p style="font-size:12px; color:#bbb; text-align:center; margin-top:20px;">
-					🍪 No cookies used.
-				</p>
-				<div
-					style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
-					🚧
-				</div>
-			</div>
-		</div>
+            <ul>
+                <li>Join an active urban cycling community</li>
+                <li>Support for indoor training, Zwift & spin classes</li>
+                <li>Be part of a welcoming, social, and inclusive club</li>
+            </ul>
+
+            <p>Whether you ride roads, trails, or fixies — all are welcome!</p>
+            <p>Consider joining our committee and help shape the club.</p>
+
+            <a href="club.html#join" class="join-button">Learn More</a>
+
+            <p style="font-size:12px; color:#bbb; text-align:center; margin-top:20px;">
+                🍪 No cookies used.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="reopenButton">Welcome</div>
 
 
-		<!-- Reopen-Button -->
-		<div id="reopenButton">Welcome </div>
+
 
 
 
@@ -427,24 +433,75 @@
 		margin-top: 5px;
 	}
 
-	.modal-content {
-		background-color: #242333;
-		background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 70%, #3b82f6);
-		background-repeat: no-repeat;
-		background-size: cover;
-		/* über gesamte Höhe */
-		color: white;
-		margin: 10% auto;
-		padding: 20px;
-		border-radius: 10px;
-		width: 90%;
-		max-width: 380px;
-		max-height: 80vh;
-		overflow-y: auto;
-		/* scrollbarer Inhalt */
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-		animation: slideIn 0.4s ease-out;
-	}
+	.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto; /* scrollen erlaubt */
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 380px;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    background: transparent; /* Video sichtbar */
+    overflow: hidden; /* verhindert Scrollen des Videos */
+    color: white;
+    animation: slideIn 0.4s ease-out;
+}
+
+.modal-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(50%);
+    border-radius: 10px; /* gleiche Rundung wie modal-content */
+}
+
+
+.modal-inner {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-height: 80vh; /* scrollbarer Bereich */
+    overflow-y: auto; /* nur Text scrollt */
+}
+
+
+.modal-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(50%);
+}
+
+
+
+.close-button {
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
 
 
 	/* Text beginnt unterhalb des Close-Buttons */
@@ -526,45 +583,55 @@
 
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-		const modal = document.getElementById('welcomeModal');
-		const modalContent = modal.querySelector('.modal-content');
-		const closeBtn = modal.querySelector('.close-button');
-		const reopenBtn = document.getElementById('reopenButton');
+    const modal = document.getElementById('welcomeModal');
+    const modalInner = modal.querySelector('.modal-inner');
+    const closeBtn = modal.querySelector('.close-button');
+    const reopenBtn = document.getElementById('reopenButton');
 
-		// Prüfen, ob Modal beim letzten Besuch offen oder geschlossen war
-		const modalState = localStorage.getItem('modalState'); // "open" oder "closed"
+    // Modal-Status aus localStorage
+    const modalState = localStorage.getItem('modalState');
 
-		if (modalState === 'closed') {
-			modal.style.display = 'none';
-			reopenBtn.style.display = 'block';
-			setTimeout(() => reopenBtn.classList.add('show'), 10);
-		} else {
-			// Standardmäßig Modal anzeigen
-			modal.style.display = 'block';
-			localStorage.setItem('modalState', 'open');
-		}
+    if (modalState === 'closed') {
+        modal.style.display = 'none';
+        reopenBtn.style.display = 'block';
+        setTimeout(() => reopenBtn.classList.add('show'), 10);
+    } else {
+        modal.style.display = 'block';
+        localStorage.setItem('modalState', 'open');
+    }
 
-		// Modal schließen → Slide nach oben, Button sichtbar
-		closeBtn.addEventListener('click', function () {
-			modalContent.style.animation = 'slideOutUp 0.3s forwards';
-			setTimeout(() => {
-				modal.style.display = 'none';
-				reopenBtn.style.display = 'block';
-				setTimeout(() => reopenBtn.classList.add('show'), 10);
-				modalContent.style.animation = '';
-				localStorage.setItem('modalState', 'closed'); // speichern
-			}, 300);
-		});
+    const closeModal = () => {
+        modalInner.style.animation = 'slideOutUp 0.3s forwards';
+        setTimeout(() => {
+            modal.style.display = 'none';
+            reopenBtn.style.display = 'block';
+            setTimeout(() => reopenBtn.classList.add('show'), 10);
+            modalInner.style.animation = '';
+            localStorage.setItem('modalState', 'closed');
+        }, 300);
+    };
 
-		// Modal wieder öffnen → Button verschwindet
-		reopenBtn.addEventListener('click', function () {
-			modal.style.display = 'block';
-			reopenBtn.classList.remove('show');
-			setTimeout(() => reopenBtn.style.display = 'none', 300);
-			modalContent.style.animation = 'slideIn 0.3s ease-out';
-			localStorage.setItem('modalState', 'open'); // speichern
-		});
-	});
+    closeBtn.addEventListener('click', closeModal);
+
+    reopenBtn.addEventListener('click', function () {
+        modal.style.display = 'block';
+        reopenBtn.classList.remove('show');
+        setTimeout(() => reopenBtn.style.display = 'none', 300);
+        modalInner.style.animation = 'slideIn 0.3s ease-out';
+        localStorage.setItem('modalState', 'open');
+    });
+
+    // Klick außerhalb schließen
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Escape-Taste schließen
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+});
+
 
 
 </script>
