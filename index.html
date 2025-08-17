@@ -322,36 +322,45 @@
 				</ul>
 			</div>
 		</section>
+		
 
 		<!-- START: Modal Popup -->
 		<div id="welcomeModal" class="modal">
 			<div class="modal-content">
-				<div
-					style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
-					🚧 Website Under Construction 🚧
-				</div>
-
 				<span class="close-button">&times;</span>
+				 <div style="text-align:center; margin-bottom:10px;">
+      <img src="images/Logos/ICCC.svg" alt="Imperial College Cycling Club Logo" style="max-width:100px; height:auto;">
+    </div>
+				
+<div
+			style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
+			🚧 Website Under Construction 🚧
+		</div>
 				<h2>Welcome to the Imperial College Cycling Club</h2>
-				<h3>Discover Cycling at Imperial</h3>
-				<p><strong>Cycling in London can be challenging:</strong> busy roads, limited storage, and green spaces
-					that
-					feel far away…</p>
+				<p>Our new website is live! 🚴‍♂️</p>
+
 				<ul>
-					<li>Encouraging an active <strong>urban cycling community</strong></li>
-					<li>Offering support for <strong>indoor training, Zwift & spin classes</strong></li>
-					<li>Building a club that’s <strong>welcoming, social, and inclusive</strong></li>
+					<li>Join an active urban cycling community</li>
+					<li>Support for indoor training, Zwift & spin classes</li>
+					<li>Be part of a welcoming, social, and inclusive club</li>
 				</ul>
-				<p><strong>From road riders to trail explorers and fixie fans — all are welcome here.</strong></p>
-				<p>Whether you’re a student, alumni, or part of the wider cycling community, we’re glad you’re here.</p>
-				<p>If you’re interested in helping shape the club, please consider joining our <strong>committee
-						team</strong>.
-				</p>
-				<p>🌍 Take a look at our updated website and find out how you can get involved.</p>
+
+				<p>Whether you ride roads, trails, or fixies — all are welcome!</p>
+				<p>Consider joining our committee and help shape the club.</p>
+
 				<a href="club.html#join" class="join-button">Learn More</a>
-				<br><br>
+
+				<!-- Cookie Hinweis -->
+				<p style="font-size:12px; color:#bbb; text-align:center; margin-top:20px;">
+					🍪 No cookies used.
+				</p>
+				<div
+			style="background-color: #ffcc00; color: black; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
+			🚧
+		</div>
 			</div>
 		</div>
+
 
 		<!-- Reopen-Button -->
 		<div id="reopenButton">Welcome </div>
@@ -376,149 +385,169 @@
 
 
 <style>
-/* Overlay */
-/* Overlay */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  overflow: auto;
-}
+	/* Overlay */
+	/* Overlay */
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
+		overflow: auto;
+	}
 
-/* Modal Content */
-/* Close Button größer machen */
-.close-button {
-  float: right;
-  font-size: 32px; /* größer */
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 5px;
-}
+	/* Modal Content */
+	/* Close Button größer machen */
+	.close-button {
+		float: right;
+		font-size: 32px;
+		/* größer */
+		font-weight: bold;
+		cursor: pointer;
+		margin-top: 5px;
+	}
 
-.modal-content {
-  background-color: #242333;
-  background-image: linear-gradient(to top, rgba(0,0,0,0) 70%, #3b82f6);
-  background-repeat: no-repeat;
-  background-size: cover; /* über gesamte Höhe */
-  color: white;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 380px;
-  max-height: 80vh;
-  overflow-y: auto; /* scrollbarer Inhalt */
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  animation: slideIn 0.4s ease-out;
-}
-
-
-/* Text beginnt unterhalb des Close-Buttons */
-.modal-content > *:not(.close-button) {
-  clear: both;
-  margin-top: 15px;
-}
+	.modal-content {
+		background-color: #242333;
+		background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 70%, #3b82f6);
+		background-repeat: no-repeat;
+		background-size: cover;
+		/* über gesamte Höhe */
+		color: white;
+		margin: 10% auto;
+		padding: 20px;
+		border-radius: 10px;
+		width: 90%;
+		max-width: 380px;
+		max-height: 80vh;
+		overflow-y: auto;
+		/* scrollbarer Inhalt */
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+		animation: slideIn 0.4s ease-out;
+	}
 
 
-/* Modal Animation */
-@keyframes slideIn {
-  from { transform: translateY(-20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slideOutUp {
-  from { transform: translateY(0); opacity: 1; }
-  to   { transform: translateY(-50px); opacity: 0; }
-}
+	/* Text beginnt unterhalb des Close-Buttons */
+	.modal-content>*:not(.close-button) {
+		clear: both;
+		margin-top: 15px;
+	}
 
 
-/* Kleine Registerkarte oben mittig */
-/* Kleine Registerkarte oben mittig, über den Rand hinaus */
+	/* Modal Animation */
+	@keyframes slideIn {
+		from {
+			transform: translateY(-20px);
+			opacity: 0;
+		}
 
-/* Kleine Registerkarte oben mittig, nur über den Rand hinaus */
-/* Kleine Registerkarte oben mittig, nur untere Ecken abgerundet */
-#reopenButton {
-  display: none;
-  position: fixed;
-  top: -20px; /* Teil über Bildschirm, obere Ecke abgeschnitten */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #000; /* schwarz */
-  color: #fff;
-  padding: 6px 16px;
-  border-radius: 0 0 6px 6px; /* nur untere Ecken abgerundet */
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4); /* leichter Schlagschatten */
-  transition: top 0.3s ease, transform 0.2s;
-  z-index: 99999; /* ganz vorne */
-}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 
-/* Slide nach unten sichtbar */
-#reopenButton.show {
-  top: 0; /* sichtbar direkt am oberen Rand */
-}
+	@keyframes slideOutUp {
+		from {
+			transform: translateY(0);
+			opacity: 1;
+		}
 
-#reopenButton:hover {
-  background: #222; /* leicht heller bei Hover */
-  transform: translateX(-50%) scale(1.05);
-}
+		to {
+			transform: translateY(-50px);
+			opacity: 0;
+		}
+	}
 
 
+	/* Kleine Registerkarte oben mittig */
+	/* Kleine Registerkarte oben mittig, über den Rand hinaus */
 
+	/* Kleine Registerkarte oben mittig, nur über den Rand hinaus */
+	/* Kleine Registerkarte oben mittig, nur untere Ecken abgerundet */
+	#reopenButton {
+		display: none;
+		position: fixed;
+		top: -20px;
+		/* Teil über Bildschirm, obere Ecke abgeschnitten */
+		left: 50%;
+		transform: translateX(-50%);
+		background: #000;
+		/* schwarz */
+		color: #fff;
+		padding: 6px 16px;
+		border-radius: 0 0 6px 6px;
+		/* nur untere Ecken abgerundet */
+		font-size: 14px;
+		font-weight: 500;
+		text-align: center;
+		cursor: pointer;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+		/* leichter Schlagschatten */
+		transition: top 0.3s ease, transform 0.2s;
+		z-index: 99999;
+		/* ganz vorne */
+	}
 
+	/* Slide nach unten sichtbar */
+	#reopenButton.show {
+		top: 0;
+		/* sichtbar direkt am oberen Rand */
+	}
+
+	#reopenButton:hover {
+		background: #222;
+		/* leicht heller bei Hover */
+		transform: translateX(-50%) scale(1.05);
+	}
 </style>
 
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const modal = document.getElementById('welcomeModal');
-  const modalContent = modal.querySelector('.modal-content');
-  const closeBtn = modal.querySelector('.close-button');
-  const reopenBtn = document.getElementById('reopenButton');
+	document.addEventListener('DOMContentLoaded', function () {
+		const modal = document.getElementById('welcomeModal');
+		const modalContent = modal.querySelector('.modal-content');
+		const closeBtn = modal.querySelector('.close-button');
+		const reopenBtn = document.getElementById('reopenButton');
 
-  // Prüfen, ob Modal beim letzten Besuch offen oder geschlossen war
-  const modalState = localStorage.getItem('modalState'); // "open" oder "closed"
+		// Prüfen, ob Modal beim letzten Besuch offen oder geschlossen war
+		const modalState = localStorage.getItem('modalState'); // "open" oder "closed"
 
-  if (modalState === 'closed') {
-    modal.style.display = 'none';
-    reopenBtn.style.display = 'block';
-    setTimeout(() => reopenBtn.classList.add('show'), 10);
-  } else {
-    // Standardmäßig Modal anzeigen
-    modal.style.display = 'block';
-    localStorage.setItem('modalState', 'open');
-  }
+		if (modalState === 'closed') {
+			modal.style.display = 'none';
+			reopenBtn.style.display = 'block';
+			setTimeout(() => reopenBtn.classList.add('show'), 10);
+		} else {
+			// Standardmäßig Modal anzeigen
+			modal.style.display = 'block';
+			localStorage.setItem('modalState', 'open');
+		}
 
-  // Modal schließen → Slide nach oben, Button sichtbar
-  closeBtn.addEventListener('click', function () {
-    modalContent.style.animation = 'slideOutUp 0.3s forwards';
-    setTimeout(() => {
-      modal.style.display = 'none';
-      reopenBtn.style.display = 'block';
-      setTimeout(() => reopenBtn.classList.add('show'), 10);
-      modalContent.style.animation = '';
-      localStorage.setItem('modalState', 'closed'); // speichern
-    }, 300);
-  });
+		// Modal schließen → Slide nach oben, Button sichtbar
+		closeBtn.addEventListener('click', function () {
+			modalContent.style.animation = 'slideOutUp 0.3s forwards';
+			setTimeout(() => {
+				modal.style.display = 'none';
+				reopenBtn.style.display = 'block';
+				setTimeout(() => reopenBtn.classList.add('show'), 10);
+				modalContent.style.animation = '';
+				localStorage.setItem('modalState', 'closed'); // speichern
+			}, 300);
+		});
 
-  // Modal wieder öffnen → Button verschwindet
-  reopenBtn.addEventListener('click', function () {
-    modal.style.display = 'block';
-    reopenBtn.classList.remove('show');
-    setTimeout(() => reopenBtn.style.display = 'none', 300);
-    modalContent.style.animation = 'slideIn 0.3s ease-out';
-    localStorage.setItem('modalState', 'open'); // speichern
-  });
-});
+		// Modal wieder öffnen → Button verschwindet
+		reopenBtn.addEventListener('click', function () {
+			modal.style.display = 'block';
+			reopenBtn.classList.remove('show');
+			setTimeout(() => reopenBtn.style.display = 'none', 300);
+			modalContent.style.animation = 'slideIn 0.3s ease-out';
+			localStorage.setItem('modalState', 'open'); // speichern
+		});
+	});
 
 
 </script>
