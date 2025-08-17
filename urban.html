@@ -8,7 +8,16 @@
 
 <head>
 	<title>Urban & More - Imperial College Cycling Club</title>
-	<link rel="icon" href="images/flavicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/flavicon.ico" type="image/x-icon"><meta http-equiv="Content-Security-Policy" 
+      content="
+        default-src 'self';          /* Alles nur von der eigenen Seite */
+        img-src 'self' data:;        /* Bilder nur von eigener Seite oder inline (data-URLs) */
+        style-src 'self' 'unsafe-inline'; /* CSS nur von eigener Seite + inline erlaubt */
+        font-src 'self';              /* Fonts nur von eigener Seite */
+        script-src 'self';            /* Scripts nur von eigener Seite */
+        connect-src 'self';           /* XHR / fetch nur zur eigenen Seite */
+      ">
+
 	<meta name="description"
 		content="Explore urban cycling, gravel rides, track biking, and more with the Imperial College Cycling Club. Embrace diverse cycling styles and community events." />
 
