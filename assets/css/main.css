@@ -3900,10 +3900,11 @@ body.is-preload #banner p {
 	z-index: 1;
 
 	/* Einfaches diagonales Linienmuster */
-	
-background-color: #BBBBBB;
-background-image: url("../../images/cornered-stairs.svg");
-	background-size: 200% auto; /* volle Breite, Höhe aus SVG */
+
+	background-color: #BBBBBB;
+	background-image: url("../../images/cornered-stairs.svg");
+	background-size: 200% auto;
+	/* volle Breite, Höhe aus SVG */
 	background-repeat: no-repeat;
 
 	/* leicht transparent für Mischung */
@@ -3911,16 +3912,14 @@ background-image: url("../../images/cornered-stairs.svg");
 	opacity: 0.2;
 
 	/* Clip über die Dreiecke */
-	clip-path: polygon(
-		0 6.5em,
-		100% 0.0em,
-		100% calc(100% - 0.0em),
-		0 calc(100% - 6.5em)
-	);
+	clip-path: polygon(0 6.5em,
+			100% 0.0em,
+			100% calc(100% - 0.0em),
+			0 calc(100% - 6.5em));
 }
 
 .wrapper .overlay-alt {
-	
+
 	transform: scaleX(-1);
 	transform-origin: center;
 }
@@ -4266,12 +4265,13 @@ background-image: url("../../images/cornered-stairs.svg");
 	}
 
 	.wrapper .overlay,
-.wrapper .overlay-alt  {
-        display: none; /* Overlay komplett deaktivieren */
-        /* oder alternativ:
+	.wrapper .overlay-alt {
+		display: none;
+		/* Overlay komplett deaktivieren */
+		/* oder alternativ:
         opacity: 0;
         pointer-events: none; */
-    }
+	}
 
 	.wrapper:before,
 	.wrapper:after {
@@ -4310,12 +4310,13 @@ background-image: url("../../images/cornered-stairs.svg");
 	}
 
 	.wrapper .overlay,
-.wrapper .overlay-alt  {
-        display: none; /* Overlay komplett deaktivieren */
-        /* oder alternativ:
+	.wrapper .overlay-alt {
+		display: none;
+		/* Overlay komplett deaktivieren */
+		/* oder alternativ:
         opacity: 0;
         pointer-events: none; */
-    }
+	}
 
 	.wrapper:before,
 	.wrapper:after {
@@ -4366,7 +4367,7 @@ background-image: url("../../images/cornered-stairs.svg");
 	}
 
 	.wrapper .overlay,
-.wrapper .overlay-alt  {
+	.wrapper .overlay-alt {
 		display: none;
 		/* Overlay komplett deaktivieren */
 		/* oder alternativ:
@@ -4385,7 +4386,7 @@ background-image: url("../../images/cornered-stairs.svg");
 
 
 	.wrapper .overlay,
-.wrapper .overlay-alt  {
+	.wrapper .overlay-alt {
 		display: none;
 		/* Overlay komplett deaktivieren */
 		/* oder alternativ:
@@ -4606,58 +4607,97 @@ background-image: url("../../images/cornered-stairs.svg");
    ========================= */
 
 /* Box-sizing & Padding reset */
+/* Box-sizing & Padding reset */
+/* Slide-Inhalt zentriert und flexibel */
+/* Slide-Container zentriert */
+
+
+/* =========================
+   Globale Splide-Reset-Regeln
+   ========================= */
 .splide,
 .splide * {
-    padding: 0 !important;
-    box-sizing: border-box;
-	border-radius: 5px; 
+    padding: 0 !important;       /* Entfernt Padding von allen Elementen */
+    box-sizing: border-box;       /* Inklusive Padding/Border in Breite/Höhe */
+    border-radius: 5px;           /* Leicht abgerundete Ecken */
 }
 
-/* Slide-Inhalt zentriert */
+/* =========================
+   Slides
+   ========================= */
 .splide__slide {
     display: flex;
-    justify-content: center;  
-    align-items: center;
-    height: 55vh;           /* kleine Bildschirme */
+    justify-content: center;      /* Inhalt horizontal zentriert */
+    align-items: center;          /* Inhalt vertikal zentriert */
+    
+    width: auto;                  /* passt sich dem Inhalt an */
+    height: auto;
+    padding-left: 0 !important;   
+	  /* überschreibt evtl. globales Padding */
 }
 
-/* Bilder proportional */
+/* =========================
+   Bilder in den Slides
+   ========================= */
 .splide__slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;     /* nichts wird abgeschnitten */
+    width: 80%;              /* füllt fast die Slide-Breite */
+        aspect-ratio: 3 / 2;  
+		max-height: 70vh;           /* proportional (rechteckig) */
+    object-fit: contain;           /* nichts wird abgeschnitten */
     display: block;
-
+	border-radius: 3px;   
 	
 }
 
-/* Große Bildschirme */
-@media (min-width: 992px) {
-    .splide__slide {
-        height: 70vh;       /* größer auf Desktop */
+/* =========================
+   Responsive für Smartphones
+   ========================= */
+@media (max-width: 767px) {
+    .splide__slide img {
+        width: 100%;              /* füllt fast die Slide-Breite */
+        aspect-ratio: 4/ 5;  
+		   /* quadratisch */
+            /* leicht abgerundet auf Handy */
     }
 }
+
+/* =========================
+   Tablet Hochformat (iPad)
+   ========================= */
+@media (min-width: 768px) and (max-width: 991px) {
+    .splide__slide img {
+        width: 90%;             /* fast volle Breite */
+        aspect-ratio: 1 / 1;    /* quadratisch */
+        max-height: 70vh;        /* optional: maximale Höhe */
+        border-radius: 3px;
+    }
+}
+
+
+
+
+
+
+
 
 /* tooltip */
 
 .tooltip-follow {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.1s ease-in-out;
-    z-index: 9999;
-    white-space: nowrap;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 0.8em;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+	z-index: 9999;
+	white-space: nowrap;
 }
 
 @media (max-width: 767px) {
-    .tooltip-follow {
-        display: none;
-    }
+	.tooltip-follow {
+		display: none;
+	}
 }
-
-
