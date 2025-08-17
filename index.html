@@ -9,19 +9,16 @@
 <head>
 	<title>Imperial College Cycling Club</title>
 	<link rel="icon" href="images/flavicon.ico" type="image/x-icon">
-	<meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';          /* Alles nur von der eigenen Seite */
-        img-src 'self' data:;        /* Bilder nur von eigener Seite oder inline (data-URLs) */
-        style-src 'self' 'unsafe-inline'; /* CSS nur von eigener Seite + inline erlaubt */
-        font-src 'self';              /* Fonts nur von eigener Seite */
-        script-src 'self';            /* Scripts nur von eigener Seite */
-        connect-src 'self';           /* XHR / fetch nur zur eigenen Seite */
-      ">
-
-	<meta name="referrer" content="no-referrer">
-
-
-
+	
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    font-src 'self';
+    img-src 'self' data:;
+    connect-src 'self';
+">
+<meta name="referrer" content="no-referrer">
 
 
 
@@ -330,11 +327,14 @@
 					</li>
 				</ul>
 
-				<ul class="copyright">
-					<li>&copy; Imperial College Cycling Club. All rights reserved.</li>
-					<li>Created by Frederik Beck, Shahmir Durrani and others at ICCC 2025. Template from <a
-							href="http://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li>
-				</ul>
+				<footer style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; font-size:14px; color:#a4a4a4; text-align:center; margin:2rem 0;">
+  <span>Created by Frederik Beck, Shahmir Durrani and others at ICCC. Template from <a href="http://html5up.net" target="_blank" rel="noopener" style="text-decoration:none;">HTML5 UP</a></span>
+					<span>&copy; Imperial College Cycling Club 2025. All rights reserved.</span>
+  <span><a href="privacy.html" style="color:#8f77ed; text-decoration:none;">Privacy Notice</a></span>
+  
+</footer>
+
+
 			</div>
 		</section>
 
