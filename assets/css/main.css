@@ -4595,21 +4595,6 @@ body.is-preload #banner p {
 	display: block;
 }
 
-/* =========================
-  /* =========================
-   Splide Slider Styles
-   ========================= */
-/* =========================
-   Splide Slider Styles
-   ========================= */
-/* =========================
-   Splide Slider Styles
-   ========================= */
-
-/* Box-sizing & Padding reset */
-/* Box-sizing & Padding reset */
-/* Slide-Inhalt zentriert und flexibel */
-/* Slide-Container zentriert */
 
 
 /* =========================
@@ -4617,60 +4602,78 @@ body.is-preload #banner p {
    ========================= */
 .splide,
 .splide * {
-    padding: 0 !important;       /* Entfernt Padding von allen Elementen */
-    box-sizing: border-box;       /* Inklusive Padding/Border in Breite/Höhe */
-    border-radius: 5px;           /* Leicht abgerundete Ecken */
+	padding: 0 !important;
+	/* Entfernt Padding von allen Elementen */
+	box-sizing: border-box;
+	/* Inklusive Padding/Border in Breite/Höhe */
+	border-radius: 5px;
+	/* Leicht abgerundete Ecken */
 }
 
 /* =========================
    Slides
    ========================= */
 .splide__slide {
-    display: flex;
-    justify-content: center;      /* Inhalt horizontal zentriert */
-    align-items: center;          /* Inhalt vertikal zentriert */
-    
-    width: auto;                  /* passt sich dem Inhalt an */
-    height: auto;
-    padding-left: 0 !important;   
-	  /* überschreibt evtl. globales Padding */
+	display: flex;
+	justify-content: center;
+	/* Inhalt horizontal zentriert */
+	align-items: center;
+	/* Inhalt vertikal zentriert */
+
+	width: auto;
+	/* passt sich dem Inhalt an */
+	height: auto;
+	padding-left: 0 !important;
+	/* überschreibt evtl. globales Padding */
 }
 
 /* =========================
    Bilder in den Slides
    ========================= */
-.splide__slide img {
-    width: 80%;              /* füllt fast die Slide-Breite */
-        aspect-ratio: 3 / 2;  
-		max-height: 70vh;           /* proportional (rechteckig) */
-    object-fit: contain;           /* nichts wird abgeschnitten */
-    display: block;
-	border-radius: 3px;   
-	
+.splide__slide img,
+.splide__slide video {
+	width: 80%;
+	/* füllt fast die Slide-Breite */
+	aspect-ratio: 3 / 2;
+	max-height: 70vh;
+	/* proportional (rechteckig) */
+	object-fit: contain;
+	/* nichts wird abgeschnitten */
+	display: block;
+	border-radius: 3px;
+
 }
 
 /* =========================
    Responsive für Smartphones
    ========================= */
 @media (max-width: 767px) {
-    .splide__slide img {
-        width: 100%;              /* füllt fast die Slide-Breite */
-        aspect-ratio: 4/ 5;  
-		   /* quadratisch */
-            /* leicht abgerundet auf Handy */
-    }
+
+	.splide__slide img,
+	.splide__slide video {
+		width: 100%;
+		/* füllt fast die Slide-Breite */
+		aspect-ratio: 4/ 5;
+		/* quadratisch */
+		/* leicht abgerundet auf Handy */
+	}
 }
 
 /* =========================
    Tablet Hochformat (iPad)
    ========================= */
 @media (min-width: 768px) and (max-width: 991px) {
-    .splide__slide img {
-        width: 90%;             /* fast volle Breite */
-        aspect-ratio: 1 / 1;    /* quadratisch */
-        max-height: 70vh;        /* optional: maximale Höhe */
-        border-radius: 3px;
-    }
+
+	.splide__slide img,
+	.splide__slide video {
+		width: 90%;
+		/* fast volle Breite */
+		aspect-ratio: 1 / 1;
+		/* quadratisch */
+		max-height: 70vh;
+		/* optional: maximale Höhe */
+		border-radius: 3px;
+	}
 }
 
 

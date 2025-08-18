@@ -344,15 +344,11 @@
 
 
 		<!-- START: Modal Popup -->
-		<div id="welcomeModal" class="modal">
+<div id="welcomeModal" class="modal">
     <div class="modal-content">
-        <video class="modal-bg-video" autoplay muted loop playsinline>
-            <source src="videos/modal-video.mp4" type="video/mp4">
-        </video>
+        <span class="close-button">&times;</span>
 
         <div class="modal-inner">
-            <span class="close-button">&times;</span>
-
             <div style="text-align:center; margin-bottom:10px;">
                 <img src="images/Logos/ICCC.svg" alt="Imperial College Cycling Club Logo"
                     style="max-width:100px; height:auto;">
@@ -391,6 +387,8 @@
 
 
 
+
+
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -408,32 +406,8 @@
 
 
 <style>
-	/* Overlay */
-	/* Overlay */
-	.modal {
-		display: none;
-		position: fixed;
-		z-index: 999;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.7);
-		overflow: auto;
-	}
-
-	/* Modal Content */
-	/* Close Button größer machen */
-	.close-button {
-		float: right;
-		font-size: 32px;
-		/* größer */
-		font-weight: bold;
-		cursor: pointer;
-		margin-top: 5px;
-	}
-
-	.modal {
+/* Overlay */
+.modal {
     display: none;
     position: fixed;
     z-index: 999;
@@ -441,10 +415,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto; /* scrollen erlaubt */
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
 }
 
+/* Modal Content */
 .modal-content {
     position: relative;
     margin: 10% auto;
@@ -453,47 +428,28 @@
     max-height: 80vh;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    background: transparent; /* Video sichtbar */
-    overflow: hidden; /* verhindert Scrollen des Videos */
+    background: linear-gradient(to bottom, rgb(1, 1, 110), rgb(0, 0, 0));
+
+    overflow: hidden;
     color: white;
     animation: slideIn 0.4s ease-out;
 }
 
-.modal-bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    filter: brightness(50%);
-    border-radius: 10px; /* gleiche Rundung wie modal-content */
-}
-
-
 .modal-inner {
     position: relative;
     z-index: 2;
-    padding: 20px;
-    max-height: 80vh; /* scrollbarer Bereich */
-    overflow-y: auto; /* nur Text scrollt */
+    max-height: calc(80vh - 20px);
+    overflow-y: auto;
+    padding: 10px 20px 20px 20px;
+    box-sizing: border-box;
 }
 
-
-.modal-bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    filter: brightness(50%);
+.modal-content > *:not(.close-button) {
+    clear: both;
+    margin-top: 5px;
 }
 
-
-
+/* Close Button */
 .close-button {
     float: right;
     font-size: 32px;
@@ -502,83 +458,46 @@
     margin-top: 5px;
 }
 
+/* Modal Animation */
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
+@keyframes slideOutUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-50px); opacity: 0; }
+}
 
-	/* Text beginnt unterhalb des Close-Buttons */
-	.modal-content>*:not(.close-button) {
-		clear: both;
-		margin-top: 15px;
-	}
+/* Reopen Button */
+#reopenButton {
+    display: none;
+    position: fixed;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 0 0 6px 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    transition: top 0.3s ease, transform 0.2s;
+    z-index: 99999;
+}
 
+#reopenButton.show {
+    top: 0;
+}
 
-	/* Modal Animation */
-	@keyframes slideIn {
-		from {
-			transform: translateY(-20px);
-			opacity: 0;
-		}
-
-		to {
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-
-	@keyframes slideOutUp {
-		from {
-			transform: translateY(0);
-			opacity: 1;
-		}
-
-		to {
-			transform: translateY(-50px);
-			opacity: 0;
-		}
-	}
-
-
-	/* Kleine Registerkarte oben mittig */
-	/* Kleine Registerkarte oben mittig, über den Rand hinaus */
-
-	/* Kleine Registerkarte oben mittig, nur über den Rand hinaus */
-	/* Kleine Registerkarte oben mittig, nur untere Ecken abgerundet */
-	#reopenButton {
-		display: none;
-		position: fixed;
-		top: -20px;
-		/* Teil über Bildschirm, obere Ecke abgeschnitten */
-		left: 50%;
-		transform: translateX(-50%);
-		background: #000;
-		/* schwarz */
-		color: #fff;
-		padding: 6px 16px;
-		border-radius: 0 0 6px 6px;
-		/* nur untere Ecken abgerundet */
-		font-size: 14px;
-		font-weight: 500;
-		text-align: center;
-		cursor: pointer;
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-		/* leichter Schlagschatten */
-		transition: top 0.3s ease, transform 0.2s;
-		z-index: 99999;
-		/* ganz vorne */
-	}
-
-	/* Slide nach unten sichtbar */
-	#reopenButton.show {
-		top: 0;
-		/* sichtbar direkt am oberen Rand */
-	}
-
-	#reopenButton:hover {
-		background: #222;
-		/* leicht heller bei Hover */
-		transform: translateX(-50%) scale(1.05);
-	}
+#reopenButton:hover {
+    background: #222;
+    transform: translateX(-50%) scale(1.05);
+}
 </style>
-
 
 
 <script>
@@ -588,7 +507,6 @@
     const closeBtn = modal.querySelector('.close-button');
     const reopenBtn = document.getElementById('reopenButton');
 
-    // Modal-Status aus localStorage
     const modalState = localStorage.getItem('modalState');
 
     if (modalState === 'closed') {
@@ -612,7 +530,6 @@
     };
 
     closeBtn.addEventListener('click', closeModal);
-
     reopenBtn.addEventListener('click', function () {
         modal.style.display = 'block';
         reopenBtn.classList.remove('show');
@@ -621,15 +538,8 @@
         localStorage.setItem('modalState', 'open');
     });
 
-    // Klick außerhalb schließen
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // Escape-Taste schließen
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") closeModal();
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeModal(); });
 });
 
 

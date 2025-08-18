@@ -12,7 +12,9 @@
 		content="Road & Indoor cycling activities and events at Imperial College Cycling Club. Join us for group rides, training, and more." />
 
 	<link rel="icon" href="images/flavicon.ico" type="image/x-icon">
-	
+
+
+
 	<meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline';
@@ -23,7 +25,7 @@
 
 ">
 
-<meta name="referrer" content="no-referrer">
+	<meta name="referrer" content="no-referrer">
 
 
 
@@ -32,6 +34,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/glightbox.min.css">
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
@@ -207,9 +210,52 @@
 									<img src="images/road-gallery/1accc0fb-5d12-444c-b9ea-8f37f25d9516.jpg" alt="">
 								</li>
 
+								<li class="splide__slide">
+									<video controls preload="none" poster="videos/day-in-life-small-preview.jpg">
+										<source src="videos/day-in-life-small.mp4" type="video/mp4">
+										Your browser does not support HTML5 video.
+									</video>
+
+								</li>
+								<li class="splide__slide">
+									<video controls preload="none" poster="videos/group-ride2-preview.jpg"
+										style="max-width:80%; max-height:70vh; display:block; margin:auto;">
+										<source src="videos/group-ride2-small.mp4" type="video/mp4">
+										Your browser does not support HTML5 video.
+									</video>
+								</li>
+
+								<li class="splide__slide">
+									<video controls preload="none" poster="videos/winter2-preview.jpg"
+										style="max-width:80%; max-height:70vh; display:block; margin:auto;">
+										<source src="videos/winter2-small.mp4" type="video/mp4">
+										Your browser does not support HTML5 video.
+									</video>
+								</li>
+
+								<li class="splide__slide">
+									<video controls preload="none" poster="videos/winter-preview.jpg"
+										style="max-width:80%; max-height:70vh; display:block; margin:auto;">
+										<source src="videos/winter-small.mp4" type="video/mp4">
+										Your browser does not support HTML5 video.
+									</video>
+								</li>
+
+
+
+
+
 							</ul>
 						</div>
 					</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -471,6 +517,29 @@
 	<script src="assets/js/splide.min.js"></script>
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('.splide', {
+        type   : 'loop',
+        perPage: 1,
+        gap    : '1rem',
+    });
+
+    splide.on('move', function () {
+        // Alle Videos pausieren
+        document.querySelectorAll('.splide__slide video').forEach(function(video) {
+            video.pause();
+        });
+    });
+
+    splide.mount();
+});
+</script>
+
+
+
+
+
 
 </body>
 
@@ -505,5 +574,19 @@
 		#footer {
 			background-attachment: scroll, scroll !important;
 		}
+	}
+
+	#video-overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.8);
+		justify-content: center;
+		align-items: center;
+		z-index: 99999;
+		/* sehr hoch setzen */
 	}
 </style>
