@@ -163,14 +163,14 @@
     });
   });
 
-  // =========================
-// Splide Slider Initialisierung
-// =========================
-document.addEventListener( 'DOMContentLoaded', function () {
+  
+//splide
+
+  document.addEventListener('DOMContentLoaded', function () {
     var sliders = document.querySelectorAll('.splide');
 
     sliders.forEach(function(slider){
-        new Splide(slider, {
+        var splide = new Splide(slider, {
             type: 'loop',
             perPage: 1,
             perMove: 1,
@@ -178,11 +178,19 @@ document.addEventListener( 'DOMContentLoaded', function () {
             pagination: true,
             gap: '1rem',
             autoplay: false,
-            interval: 3000,
-            lazyLoad: 'nearby', // lädt aktuelle + vorherige/nächste Folie
-        }).mount();
+            lazyLoad: 'sequential',
+        });
+
+        splide.on('move', function () {
+            slider.querySelectorAll('video').forEach(function(video) {
+                video.pause();
+            });
+        });
+
+        splide.mount();
     });
 });
+
 
 //tooltip
 document.addEventListener("DOMContentLoaded", function () {
