@@ -63,7 +63,8 @@ nav a { font-weight:600; color: var(--text);  margin-left: 2rem; }
   display: flex;
   justify-content: center; /* Inhalt horizontal mittig */
   align-items: center;     /* Inhalt vertikal mittig */
-  padding: 0;              /* sicherheitshalber */
+  padding: 0;    
+  margin-bottom: 5rem;          /* sicherheitshalber */
 }
 
 @media (max-width: 900px) {
@@ -82,7 +83,17 @@ nav a { font-weight:600; color: var(--text);  margin-left: 2rem; }
   height: 110%;         /* Überhang unten */
   object-fit: cover;
   z-index: 0;
+    will-change: transform;
+  backface-visibility: hidden;
+  
+
+
+
+  /* leichte Transparenz, damit Text besser lesbar ist */
+  opacity: 0.85; /* oder 0.8, je nach Wunsch */
 }
+
+
 
 #hero-content {
   position: relative;
@@ -136,22 +147,25 @@ padding:2rem;
 
 
 /* Sections & Boxen */
-section { 
-  padding:1rem 2rem; /* weniger Abstand oben/unten */
-  max-width:1100px; 
-  margin:auto; 
-  position:relative; 
+/* Sections */
+section {
+  padding: 0rem; /* oben groß, unten kleiner */
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
 }
 
+/* Boxen */
 .box {
-  padding:2rem;
-  border-radius:15px;
-  margin-bottom:1.5rem; /* Abstand zwischen Boxen reduzieren */
-  box-shadow:0 10px 20px rgba(0,0,0,0.08);
-  opacity:0;
-  transform: translateY(80px) scale(0.95); /* stärkeres Einfliegen */
-  transition: all 1s cubic-bezier(0.5, 0, 0, 1); /* sanfter, sichtbarer Effekt */
+  padding: 2rem;
+  border-radius: 15px;
+   margin-bottom: 2rem; /* kleiner Abstand zwischen Boxen */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
 }
+
 
 .box.visible { 
   opacity:1; 
@@ -275,7 +289,7 @@ nav a:hover {
 
 <section id="about">
   <div class="two-col box">
-    <img src="about.jpg" alt="Über mich Bild">
+    <img src="coaching_website/about.jpg" alt="Über mich Bild">
     <div>
       <h2>Über mich</h2>
       <p>Kurzer Text über Qualifikationen, Motivation und Werte. Authentisch und professionell, um Vertrauen aufzubauen.</p>
@@ -321,39 +335,60 @@ const heroImg = document.querySelector('#hero img');
 const heroSection = document.querySelector('#hero');
 const boxes = document.querySelectorAll('#about .box, #services .box, #contact .box');
 const arrow = document.getElementById('scroll-arrow');
+const parallaxSpeed = window.innerWidth < 900 ? 0.5 : 0.3; // Handy schneller
+
 let parallaxDone = false;
-const parallaxSpeed = window.innerWidth < 900 ? 0.5 : 0.5; // Geschwindigkeit kann beliebig angepasst werden
+let ticking = false;
+
+// Observer nur einmal anlegen
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+
+function updateParallax() {
+  const heroTop = heroSection.getBoundingClientRect().top;
+  const heroHeight = heroSection.offsetHeight;
+  const imageHeight = heroImg.offsetHeight;
+  const overhang = imageHeight - heroHeight;
+
+  if (!parallaxDone) {
+    let scrolled = Math.min(-heroTop * parallaxSpeed, overhang);
+    heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
+
+    if (scrolled >= overhang) {
+      parallaxDone = true;
+      heroImg.style.transform = `translate(-50%, ${-overhang}px)`; // fixieren
+      if (arrow) arrow.style.display = 'none';
+      boxes.forEach(box => observer.observe(box));
+    }
+  }
+
+  ticking = false;
+}
+
+function resetParallax() {
+  // Reset Zustand bei Resize
+  parallaxDone = false;
+  heroImg.style.transform = 'translate(-50%, 0)'; 
+  if (arrow) arrow.style.display = ''; // Pfeil zurückholen
+  updateParallax(); // sofort neu berechnen
+}
+
+window.addEventListener('resize', resetParallax);
 
 window.addEventListener('scroll', () => {
-  if (parallaxDone) return;
-
-  const heroTop = heroSection.getBoundingClientRect().top;
-const heroHeight = heroSection.offsetHeight;
-const imageHeight = heroImg.offsetHeight;
-const overhang = imageHeight - heroHeight;
-
-let scrolled = Math.min(-heroTop * parallaxSpeed, overhang);
-heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
-
-
-  heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
-
-  // Prüfen, ob Hero-Bild-Unterkante = Hero-Unterkante
-  if (scrolled >= overhang) {
-    parallaxDone = true;
-    heroImg.style.transform = `translate(-50%, ${-overhang}px)`; // fixieren
-
-    if (arrow) arrow.style.display = 'none';
-
-    // IntersectionObserver jetzt aktivieren
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    boxes.forEach(box => observer.observe(box));
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
   }
 });
+
+// Initial aufrufen
+updateParallax();
+
+
 
 // Pfeil klick scrollt ein Stück nach unten
 document.getElementById('scroll-arrow').addEventListener('click', () => {
@@ -380,6 +415,24 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1); // z.B. "about"
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    // Höhe des fixen Headers abziehen
+    const headerOffset = document.querySelector('header').offsetHeight;
+    const elementPosition = targetEl.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  });
+});
 
 
 
