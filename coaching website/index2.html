@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching – Vorname Nachname</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+#about .box { background: rgba(255, 255, 255, 0.9); }
+#services .box { background: rgba(248, 248, 248, 0.9); }
+#contact .box { background: rgba(255, 250, 245, 0.9); }
+
+
+:root {
+  --primary: #2C7A7B;
+  --secondary: #F6F1EB;
+  --accent: #E07A5F;
+  --text: #2D2D2D;
+  --bg-gradient-start: #F6F1EB;
+  --bg-gradient-end: #E8F6F6;
+  --box-color-about: #ffffffcc;
+  --box-color-services: #ffffffcc;
+  --box-color-contact: #ffffffcc;
+}
+
+body {
+  margin:0;
+  font-family:'Open Sans',sans-serif;
+  color:var(--text);
+  line-height:1.6;
+  scroll-behavior:smooth;
+  background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+}
+
+/* Header */
+header {
+  position:fixed; top:0; left:0; right:0;
+  background: rgba(255,255,255,0.95);
+  border-bottom:1px solid #ddd;
+  padding:0.8rem 2rem;
+  display:flex; justify-content:space-between; align-items:center;
+  z-index:1000;
+}
+nav a { font-weight:600; color: var(--text);  margin-left: 2rem; }
+.burger { display:none; flex-direction:column; cursor:pointer; gap:4px; }
+.burger div { width:25px; height:3px; background: var(--text); }
+.nav-open { display:flex !important; position:absolute; top:60px; right:2rem; background:white; padding:1rem; border-radius:5px; box-shadow:0 2px 10px rgba(0,0,0,0.15); flex-direction:column; gap:0.8rem; }
+
+
+
+/* Hero */
+#hero {
+  position: relative;
+  
+  overflow: visible;       /* Bild darf überstehen */
+  width: 100vw;             /* statt 100vw */
+  max-width: 1920px;       /* Begrenzung */
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;          /* horizontal zentrieren */
+
+  display: flex;
+  justify-content: center; /* Inhalt horizontal mittig */
+  align-items: center;     /* Inhalt vertikal mittig */
+  padding: 0;              /* sicherheitshalber */
+}
+
+@media (max-width: 900px) {
+  #hero {
+    aspect-ratio: 1 / 1; /* Hochformat für Handy */
+             /* volle Breite */
+  }
+}
+
+#hero img {
+  position: absolute;
+  top: 0;               /* oben ausrichten */
+  left: 50%;            /* horizontal zentriert */
+  transform: translateX(-50%);  /* nur horizontal verschieben */
+  width: auto;
+  height: 110%;         /* Überhang unten */
+  object-fit: cover;
+  z-index: 0;
+}
+
+#hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 1100px;
+  width: 100%;
+
+  /* Animation initial */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+padding:2rem;
+}
+
+
+  
+
+#hero-content.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+
+
+/* Buttons */
+.btn { display:inline-block; background:var(--accent); color:white; padding:0.75rem 1.5rem; border-radius:5px; margin-top:1.5rem; font-weight:600; }
+.btn:hover { background:#cf674f; }
+
+#scroll-arrow {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  animation: bounce 1.5s infinite;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+
+/* Sections & Boxen */
+section { 
+  padding:1rem 2rem; /* weniger Abstand oben/unten */
+  max-width:1100px; 
+  margin:auto; 
+  position:relative; 
+}
+
+.box {
+  padding:2rem;
+  border-radius:15px;
+  margin-bottom:1.5rem; /* Abstand zwischen Boxen reduzieren */
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
+  opacity:0;
+  transform: translateY(80px) scale(0.95); /* stärkeres Einfliegen */
+  transition: all 1s cubic-bezier(0.5, 0, 0, 1); /* sanfter, sichtbarer Effekt */
+}
+
+.box.visible { 
+  opacity:1; 
+  transform: translateY(0) scale(1); 
+}
+
+
+/* Two-column layout */
+.two-col { display:flex; gap:2rem; align-items:center; }
+.two-col img { max-width:350px; border-radius:15px; }
+
+/* Form */
+form { display:flex; flex-direction:column; gap:1rem; }
+input, textarea { padding:0.75rem; border:1px solid #ccc; border-radius:5px; font-size:1rem; }
+button { background: var(--primary); color:white; padding:0.75rem; border:none; border-radius:5px; font-size:1rem; cursor:pointer; font-weight:600; }
+button:hover { background:#256668; }
+
+/* Footer */
+footer { text-align:center; padding:2rem; font-size:0.9rem; background:#f6f6f6; }
+
+/* Responsive */
+@media(max-width:900px){
+  .two-col { flex-direction:column; text-align:center; }
+  nav { display:none; }
+  .burger { display:flex; }
+}
+
+/* Mobile */
+@media(max-width:900px){
+  nav {
+    display:none;
+    position:absolute;
+    top:60px;
+    right:2rem;
+    background:white;
+    flex-direction:column;
+    gap:0.8rem;
+    padding:1rem;
+    border-radius:5px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    z-index:999;
+
+
+  }
+
+nav a {
+    margin-left: 0;
+  }
+
+  nav.nav-open {
+    display:flex;
+  }
+
+  .burger {
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    gap:4px;
+  }
+}
+
+/* Überschriften */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Fließtext */
+body, p, li, input, textarea, button, nav a {
+  font-family: 'Lora', serif; /* elegantes Serif für Lesbarkeit */
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Menü links – Unterstreichung entfernen und subtile Hover-Farbe */
+nav a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><strong>Coaching</strong></div>
+  <nav class="nav-links">
+    <a href="#hero">Start</a>
+    <a href="#about">Über mich</a>
+    <a href="#services">Leistungen</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+  <div class="burger" onclick="document.querySelector('nav').classList.toggle('nav-open')">
+    <div></div><div></div><div></div>
+  </div>
+</header>
+
+<section id="hero">
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80" alt="Hero">
+  <div id="hero-content">
+    <h1>Vorname Nachname</h1>
+    <p>Coaching für Klarheit, Orientierung und persönliche Entwicklung</p>
+    <a href="#contact" class="btn">Jetzt Kontakt aufnehmen</a>
+  </div>
+<div id="scroll-arrow">&#x2193;</div> <!-- Pfeil nach unten -->
+</section>
+
+<section id="about">
+  <div class="two-col box">
+    <img src="about.jpg" alt="Über mich Bild">
+    <div>
+      <h2>Über mich</h2>
+      <p>Kurzer Text über Qualifikationen, Motivation und Werte. Authentisch und professionell, um Vertrauen aufzubauen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="box">
+    <h2>Leistungen</h2>
+    <ul>
+      <li>✔ Einzelcoaching (vor Ort oder online)</li>
+      <li>✔ Workshops für Gruppen</li>
+      <li>✔ Persönliche Begleitung in Veränderungsprozessen</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="box">
+    <h2>Kontakt</h2>
+    <form>
+      <input type="text" name="name" placeholder="Ihr Name" required>
+      <input type="email" name="email" placeholder="Ihre E-Mail" required>
+      <textarea name="message" rows="5" placeholder="Ihre Nachricht"></textarea>
+      <button type="submit">Absenden</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Vorname Nachname · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+</footer>
+
+<script>
+// Burger Menü
+function toggleMenu() {
+  document.querySelector('nav').classList.toggle('nav-open');
+}
+
+// Parallax & Observer
+const heroImg = document.querySelector('#hero img');
+const heroSection = document.querySelector('#hero');
+const boxes = document.querySelectorAll('#about .box, #services .box, #contact .box');
+const arrow = document.getElementById('scroll-arrow');
+let parallaxDone = false;
+const parallaxSpeed = window.innerWidth < 900 ? 0.5 : 0.5; // Geschwindigkeit kann beliebig angepasst werden
+
+window.addEventListener('scroll', () => {
+  if (parallaxDone) return;
+
+  const heroTop = heroSection.getBoundingClientRect().top;
+const heroHeight = heroSection.offsetHeight;
+const imageHeight = heroImg.offsetHeight;
+const overhang = imageHeight - heroHeight;
+
+let scrolled = Math.min(-heroTop * parallaxSpeed, overhang);
+heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
+
+
+  heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
+
+  // Prüfen, ob Hero-Bild-Unterkante = Hero-Unterkante
+  if (scrolled >= overhang) {
+    parallaxDone = true;
+    heroImg.style.transform = `translate(-50%, ${-overhang}px)`; // fixieren
+
+    if (arrow) arrow.style.display = 'none';
+
+    // IntersectionObserver jetzt aktivieren
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    boxes.forEach(box => observer.observe(box));
+  }
+});
+
+// Pfeil klick scrollt ein Stück nach unten
+document.getElementById('scroll-arrow').addEventListener('click', () => {
+  window.scrollBy({ top: 200, behavior: 'smooth' });
+});
+
+// Hero Text einblenden
+window.addEventListener('load', () => {
+  document.querySelector('#hero-content').classList.add('visible');
+});
+
+
+
+
+// Hero Text beim Laden einblenden
+window.addEventListener('load', () => {
+  document.querySelector('#hero-content').classList.add('visible');
+});
+
+// Burger-Menü Links schließen beim Klick
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('nav').classList.remove('nav-open');
+  });
+});
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
