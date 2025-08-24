@@ -8,22 +8,85 @@
 
 <style>
 
-#about .box { background: rgba(255, 255, 255, 0.9); }
-#services .box { background: rgba(248, 248, 248, 0.9); }
-#contact .box { background: rgba(255, 250, 245, 0.9); }
+/* Einheitliche zarte Farbe für alle Boxen */
+/* Einheitliche zarte Farbe für alle Boxen */
+#about .box,
+#methods .box,
+#approach .box,
+#testimonials .box,
+#contact .box {
+  background: rgba(251, 248, 243, 0.85); /* warmes Pastellweiß */
+  
+  
+  
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* sanfter Schatten */
+  
+}
 
 
 :root {
-  --primary: #2C7A7B;
-  --secondary: #F6F1EB;
-  --accent: #E07A5F;
   --text: #2D2D2D;
-  --bg-gradient-start: #F6F1EB;
-  --bg-gradient-end: #E8F6F6;
-  --box-color-about: #ffffffcc;
-  --box-color-services: #ffffffcc;
-  --box-color-contact: #ffffffcc;
+  --accent: #FF6F61;       /* Koralle */
+  --accent2: #4CAF50;      /* Grün für subtile Elemente */
+  --accent-hover: #E64B45;
+
+  --bg-body-top: #FFF5E6;  /* warmes Hellorange */
+  --bg-body-bottom: #E6FFFA; /* leichtes Mint */
+
+  --bg-box: rgba(255, 243, 230, 0.95); /* helles Apricot */
+  --box-shadow: rgba(0,0,0,0.1);
 }
+
+/* H2 before Linie */
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 50px;
+  height: 4px;
+  background: var(--accent);  /* z. B. kräftiges Blau oder Gradient */
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+/* Boxen in Grautönen */
+#about .box       { background: rgba(245, 245, 245, 0.9); }  /* helles Grau */
+#methods .box     { background: rgba(245, 245, 245, 0.9); }  /* leicht dunkleres Hellgrau */
+#approach .box    { background: rgba(245, 245, 245, 0.9); }  /* wieder helles Grau */
+#testimonials .box{ background: rgba(245, 245, 245, 0.9); }   /* kontrastierende Abwechslung */
+#contact .box     { background: rgba(245, 245, 245, 0.9); }  /* helles Grau */
+
+/* Buttons */
+.btn {
+  display: block;           /* damit margin auto funktioniert */
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  max-width: 220px;
+  text-align: center;
+  margin: 1.5rem auto 0 auto;  /* oben 1.5rem, horizontal zentriert, unten 0 */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Box hover leicht dynamisch */
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+}
+
+/* Überschriften Akzentfarbe */
+h2::before {
+  background: var(--accent);
+}
+
 
 body {
   margin:0;
@@ -31,7 +94,14 @@ body {
   color:var(--text);
   line-height:1.6;
   scroll-behavior:smooth;
-  background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+  
+     background: linear-gradient(
+    to bottom,
+    #fcfcfb 0%,   /* Creme oben */
+    #d7d6d6 100%   /* Hellgrau unten */
+  );
+
+
 }
 
 /* Header */
@@ -53,19 +123,18 @@ nav a { font-weight:600; color: var(--text);  margin-left: 2rem; }
 /* Hero */
 #hero {
   position: relative;
-  
-  overflow: visible;       /* Bild darf überstehen */
-  width: 100vw;             /* statt 100vw */
-  max-width: 1920px;       /* Begrenzung */
+  overflow: visible;
+  width: 100vw;
+  max-width: 1920px;
   aspect-ratio: 16 / 9;
-  margin: 0 auto;          /* horizontal zentrieren */
+  margin: 0 auto 6rem auto; /* oben 0, horizontal auto, unten 5rem */
+  padding: 0;
 
   display: flex;
-  justify-content: center; /* Inhalt horizontal mittig */
-  align-items: center;     /* Inhalt vertikal mittig */
-  padding: 0;    
-  margin-bottom: 5rem;          /* sicherheitshalber */
+  justify-content: center;
+  align-items: center;
 }
+
 
 @media (max-width: 900px) {
   #hero {
@@ -80,13 +149,18 @@ nav a { font-weight:600; color: var(--text);  margin-left: 2rem; }
   left: 50%;            /* horizontal zentriert */
   transform: translateX(-50%);  /* nur horizontal verschieben */
   width: auto;
-  height: 110%;         /* Überhang unten */
+  height: 120%;         /* Überhang unten */
   object-fit: cover;
   z-index: 0;
     will-change: transform;
   backface-visibility: hidden;
   
-
+mask-image: linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
 
 
   /* leichte Transparenz, damit Text besser lesbar ist */
@@ -124,9 +198,7 @@ padding:2rem;
 }
 
 
-/* Buttons */
-.btn { display:inline-block; background:var(--accent); color:white; padding:0.75rem 1.5rem; border-radius:5px; margin-top:1.5rem; font-weight:600; }
-.btn:hover { background:#cf674f; }
+
 
 #scroll-arrow {
   position: absolute;
@@ -149,33 +221,36 @@ padding:2rem;
 /* Sections & Boxen */
 /* Sections */
 section {
-  padding: 0rem; /* oben groß, unten kleiner */
-  max-width: 1100px;
+  padding: 1rem 1rem; /* oben & unten Luft */
+  width: 100vw;;
   margin: 0 auto;
   position: relative;
 }
 
 /* Boxen */
+/* Boxen: mehr Volumen, weniger seitliches Padding */
 .box {
-  padding: 2rem;
-  border-radius: 15px;
-   margin-bottom: 2rem; /* kleiner Abstand zwischen Boxen */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
   opacity: 0;
-  transform: translateY(80px) scale(0.95);
-  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+  transform: translateY(40px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  padding: 4rem 2rem 11rem 2rem; /* oben 4rem, seitlich 2rem, unten 6rem */
+  border-radius: 0; /* keine abgerundeten Ecken */
+  box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  background: rgba(245, 237, 226, 0.9); /* Pastellbeige, leicht transparent */
 }
 
-
-.box.visible { 
-  opacity:1; 
-  transform: translateY(0) scale(1); 
+.box.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
 
 
 /* Two-column layout */
 .two-col { display:flex; gap:2rem; align-items:center; }
-.two-col img { max-width:350px; border-radius:15px; }
+.two-col img { max-width:350px; border-radius:0px; }
 
 /* Form */
 form { display:flex; flex-direction:column; gap:1rem; }
@@ -184,7 +259,7 @@ button { background: var(--primary); color:white; padding:0.75rem; border:none; 
 button:hover { background:#256668; }
 
 /* Footer */
-footer { text-align:center; padding:2rem; font-size:0.9rem; background:#f6f6f6; }
+footer { text-align:center; padding:2rem; font-size:0.9rem; }
 
 /* Responsive */
 @media(max-width:900px){
@@ -193,7 +268,17 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; background:#f6f6f6; 
   .burger { display:flex; }
 }
 
-/* Mobile */
+/* Desktop Sprache select */
+nav select {
+  margin-left: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Mobile: ins Burger Menü verschieben */
 @media(max-width:900px){
   nav {
     display:none;
@@ -208,39 +293,74 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; background:#f6f6f6; 
     box-shadow:0 2px 10px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
     z-index:999;
-
-
   }
 
-nav a {
-    margin-left: 0;
+  nav a, nav select {
+    margin-left: 0;  /* links ausrichten */
+    width: 100%;     /* volle Breite */
   }
 
   nav.nav-open {
     display:flex;
   }
+}
 
+
+  /* Burger nur Mobile */
+.burger {
+  display: none; /* Standard Desktop */
+}
+
+@media(max-width:900px){
   .burger {
-    display:flex;
-    flex-direction:column;
-    cursor:pointer;
-    gap:4px;
+    display:flex; /* Mobile sichtbar */
   }
 }
 
+/* Desktop nav rechtsbündig */
+@media(min-width:901px){
+  nav.nav-links {
+    display: flex;
+    justify-content: flex-end; /* rechtsbündig */
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  nav a, nav select {
+    margin-left: 0; /* Abstand wird über gap gesteuert */
+  }
+}
+
+
 /* Überschriften */
-h1, h2, h3 {
+h2, h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 1rem;
 }
 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 3rem; /* größer */
+  margin-bottom: 1rem;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.3); /* zarter heller Schein */
+}
+
+
+
+
 /* Fließtext */
 body, p, li, input, textarea, button, nav a {
   font-family: 'Lora', serif; /* elegantes Serif für Lesbarkeit */
   font-weight: 400;
   color: var(--text);
+  body {
+  
+}
+
 }
 
 /* Menü links – Unterstreichung entfernen und subtile Hover-Farbe */
@@ -259,171 +379,191 @@ nav a:hover {
   }
 }
 
+.language-dropdown {
+  position: relative;
+  margin-left: 2rem;
+  font-weight: 600;
+}
+
+.language-dropdown button {
+  background: none;
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.language-dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: none;
+  width: 100%;
+  z-index: 1000;
+}
+
+.language-dropdown ul li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.language-dropdown ul li:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* sichtbar wenn aktiv */
+.language-dropdown.active ul {
+  display: block;
+}
+
+
 
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><strong>Coaching</strong></div>
+  <div class="logo"><strong>Maia Coaching</strong></div>
   <nav class="nav-links">
-    <a href="#hero">Start</a>
-    <a href="#about">Über mich</a>
-    <a href="#services">Leistungen</a>
-    <a href="#contact">Kontakt</a>
+    <a href="#hero" data-de="Start" data-fr="Accueil" data-en="Home">Start</a>
+    <a href="#about" data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</a>
+    <a href="#methods" data-de="Methoden" data-fr="Méthodes" data-en="Methods">Methoden</a>
+    <a href="#approach" data-de="Ablauf" data-fr="Processus" data-en="Approach">Ablauf</a>
+    <a href="#testimonials" data-de="Feedback" data-fr="Témoignages" data-en="Testimonials">Feedback</a>
+    <a href="#contact" data-de="Kontakt" data-fr="Contact" data-en="Contact">Kontakt</a>
+
+    <select id="language-select">
+      <option value="de" selected>🇩🇪 Deutsch</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
   </nav>
-  <div class="burger" onclick="document.querySelector('nav').classList.toggle('nav-open')">
+
+  <div class="burger">
     <div></div><div></div><div></div>
   </div>
 </header>
 
 <section id="hero">
-  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80" alt="Hero">
+  <img src="coaching_website/walk.jpg" alt="Hero">
   <div id="hero-content">
-    <h1>Vorname Nachname</h1>
-    <p>Coaching für Klarheit, Orientierung und persönliche Entwicklung</p>
-    <a href="#contact" class="btn">Jetzt Kontakt aufnehmen</a>
+    <h1 data-de="Maia Coaching – Uli Kohl" data-fr="Maia Coaching – Uli Kohl" data-en="Maia Coaching – Uli Kohl">Maia Coaching – Uli Kohl</h1>
+    <p data-de="Coaching für Klarheit, Orientierung und persönliche Entwicklung"
+       data-fr="Coaching pour clarté, orientation et développement personnel"
+       data-en="Coaching for clarity, guidance, and personal development">
+       Coaching für Klarheit, Orientierung und persönliche Entwicklung
+    </p>
+    <a href="#contact" class="btn" data-de="Jetzt Kontakt aufnehmen" data-fr="Contactez-moi maintenant" data-en="Get in touch now">Jetzt Kontakt aufnehmen</a>
   </div>
-<div id="scroll-arrow">&#x2193;</div> <!-- Pfeil nach unten -->
+<div id="scroll-arrow">&#x2193;</div>
 </section>
 
 <section id="about">
   <div class="two-col box">
-    <img src="coaching_website/about.jpg" alt="Über mich Bild">
+    <img src="coaching_website/portrait.webp" alt="Über mich Bild">
     <div>
-      <h2>Über mich</h2>
-      <p>Kurzer Text über Qualifikationen, Motivation und Werte. Authentisch und professionell, um Vertrauen aufzubauen.</p>
+      <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
+      <p data-de="Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen."
+         data-fr="Je suis Uli Kohl, coach pour le développement personnel et l’orientation. Mes valeurs : authenticité, clarté, confiance."
+         data-en="I am Uli Kohl, a coach for personal development and guidance. My values: authenticity, clarity, trust.">
+        
+      </p>
     </div>
   </div>
 </section>
 
-<section id="services">
+<section id="methods">
   <div class="box">
-    <h2>Leistungen</h2>
+    <h2 data-de="Methoden" data-fr="Méthodes" data-en="Methods">Methoden</h2>
     <ul>
-      <li>✔ Einzelcoaching (vor Ort oder online)</li>
-      <li>✔ Workshops für Gruppen</li>
-      <li>✔ Persönliche Begleitung in Veränderungsprozessen</li>
+      <li data-de="🧭 Zielorientiertes Einzelcoaching" data-fr="🧭 Coaching individuel orienté objectifs" data-en="🧭 Goal-oriented one-on-one coaching">🧭 Zielorientiertes Einzelcoaching</li>
+      <li data-de="🤝 Workshops für Gruppen" data-fr="🤝 Ateliers pour groupes" data-en="🤝 Group workshops">🤝 Workshops für Gruppen</li>
+      <li data-de="💡 Kreative Übungen & Reflektion" data-fr="💡 Exercices créatifs & réflexion" data-en="💡 Creative exercises & reflection">💡 Kreative Übungen & Reflektion</li>
+      <li data-de="🌱 Begleitung in Veränderungsprozessen" data-fr="🌱 Accompagnement dans les processus de changement" data-en="🌱 Guidance through change processes">🌱 Begleitung in Veränderungsprozessen</li>
     </ul>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="box">
+    <h2 data-de="Ablauf" data-fr="Processus" data-en="Approach">Ablauf</h2>
+    <p data-de="Wir starten mit einem kostenlosen Kennenlerntermin, definieren Ziele, arbeiten an Klarheit und Handlungsstrategien und begleiten die Umsetzung."
+       data-fr="Nous commençons par une rencontre gratuite, définissons les objectifs, travaillons sur la clarté et les stratégies d'action, et accompagnons la mise en œuvre."
+       data-en="We start with a free introductory session, define goals, work on clarity and action strategies, and support implementation.">
+      
+    </p>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="box">
+    <h2 data-de="Feedback" data-fr="Témoignages" data-en="Testimonials">Feedback</h2>
+    <p data-de="„Uli hat mir geholfen, meine Ziele klar zu sehen und endlich ins Handeln zu kommen.“ – Anna, 32" 
+       data-fr="« Uli m'a aidé à clarifier mes objectifs et à passer à l'action. » – Anna, 32"
+       data-en="“Uli helped me see my goals clearly and finally take action.” – Anna, 32">
+       „Uli hat mir geholfen, meine Ziele klar zu sehen und endlich ins Handeln zu kommen.“ – Anna, 32
+    </p>
+    <p data-de="„Durch die Zusammenarbeit mit Maia Coaching habe ich mehr Selbstvertrauen gewonnen.“ – Markus, 45"
+       data-fr="« Grâce à Maia Coaching, j'ai gagné en confiance en moi. » – Markus, 45"
+       data-en="“Through working with Maia Coaching, I gained more self-confidence.” – Markus, 45">
+       „Durch die Zusammenarbeit mit Maia Coaching habe ich mehr Selbstvertrauen gewonnen.“ – Markus, 45
+    </p>
   </div>
 </section>
 
 <section id="contact">
   <div class="box">
-    <h2>Kontakt</h2>
-    <form>
-      <input type="text" name="name" placeholder="Ihr Name" required>
-      <input type="email" name="email" placeholder="Ihre E-Mail" required>
-      <textarea name="message" rows="5" placeholder="Ihre Nachricht"></textarea>
-      <button type="submit">Absenden</button>
-    </form>
+    <h2 data-de="Kontakt" data-fr="Contact" data-en="Contact">Kontakt</h2>
+    <p data-de="📧 Schreiben Sie mir eine E-Mail: uli.kohl@example.com"
+       data-fr="📧 Écrivez-moi par e-mail : uli.kohl@example.com"
+       data-en="📧 Send me an email: uli.kohl@example.com">
+       📧 Schreiben Sie mir eine E-Mail: uli.kohl@example.com
+    </p>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Vorname Nachname · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+  <p data-de="© 2025 Uli Kohl · Impressum · Datenschutz"
+     data-fr="© 2025 Uli Kohl · Mentions légales · Politique de confidentialité"
+     data-en="© 2025 Uli Kohl · Imprint · Privacy Policy">
+     © 2025 Uli Kohl · Impressum · Datenschutz
+  </p>
 </footer>
 
+
+
 <script>
-// Burger Menü
-function toggleMenu() {
-  document.querySelector('nav').classList.toggle('nav-open');
-}
+// ===== Burger Menü =====
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('nav');
 
-// Parallax & Observer
-const heroImg = document.querySelector('#hero img');
-const heroSection = document.querySelector('#hero');
-const boxes = document.querySelectorAll('#about .box, #services .box, #contact .box');
-const arrow = document.getElementById('scroll-arrow');
-const parallaxSpeed = window.innerWidth < 900 ? 0.5 : 0.3; // Handy schneller
-
-let parallaxDone = false;
-let ticking = false;
-
-// Observer nur einmal anlegen
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.2 });
-
-function updateParallax() {
-  const heroTop = heroSection.getBoundingClientRect().top;
-  const heroHeight = heroSection.offsetHeight;
-  const imageHeight = heroImg.offsetHeight;
-  const overhang = imageHeight - heroHeight;
-
-  if (!parallaxDone) {
-    let scrolled = Math.min(-heroTop * parallaxSpeed, overhang);
-    heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
-
-    if (scrolled >= overhang) {
-      parallaxDone = true;
-      heroImg.style.transform = `translate(-50%, ${-overhang}px)`; // fixieren
-      if (arrow) arrow.style.display = 'none';
-      boxes.forEach(box => observer.observe(box));
-    }
-  }
-
-  ticking = false;
-}
-
-function resetParallax() {
-  // Reset Zustand bei Resize
-  parallaxDone = false;
-  heroImg.style.transform = 'translate(-50%, 0)'; 
-  if (arrow) arrow.style.display = ''; // Pfeil zurückholen
-  updateParallax(); // sofort neu berechnen
-}
-
-window.addEventListener('resize', resetParallax);
-
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(updateParallax);
-    ticking = true;
-  }
+// Burger Klick: Menü öffnen/schließen
+burger.addEventListener('click', () => {
+  if(nav) nav.classList.toggle('nav-open');
 });
 
-// Initial aufrufen
-updateParallax();
-
-
-
-// Pfeil klick scrollt ein Stück nach unten
-document.getElementById('scroll-arrow').addEventListener('click', () => {
-  window.scrollBy({ top: 200, behavior: 'smooth' });
-});
-
-// Hero Text einblenden
-window.addEventListener('load', () => {
-  document.querySelector('#hero-content').classList.add('visible');
-});
-
-
-
-
-// Hero Text beim Laden einblenden
-window.addEventListener('load', () => {
-  document.querySelector('#hero-content').classList.add('visible');
-});
-
-// Burger-Menü Links schließen beim Klick
+// Klick auf Link: Menü schließen und Scrollen
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.querySelector('nav').classList.remove('nav-open');
-  });
-});
-
-document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1); // z.B. "about"
+    if (nav && nav.classList.contains('nav-open')) {
+      nav.classList.remove('nav-open');
+    }
+
+    const targetId = link.getAttribute('href').substring(1);
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
 
-    // Höhe des fixen Headers abziehen
-    const headerOffset = document.querySelector('header').offsetHeight;
+    const header = document.querySelector('header');
+    const headerOffset = header ? header.offsetHeight : 0;
     const elementPosition = targetEl.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -434,11 +574,113 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
+// ===== Sprache automatisch auswählen =====
+document.addEventListener('DOMContentLoaded', () => {
+  const languageSelect = document.getElementById('language-select');
+  if(!languageSelect) return;
 
+  const userLang = navigator.language.slice(0, 2);
+  const supportedLangs = ['de', 'fr', 'en'];
+  const defaultLang = supportedLangs.includes(userLang) ? userLang : 'de';
 
+  languageSelect.value = defaultLang;
 
+  // Inhalte direkt anpassen
+  document.querySelectorAll('[data-de]').forEach(el => {
+    if (el.dataset[defaultLang]) el.innerHTML = el.dataset[defaultLang];
+  });
 
+  // Änderung beim Dropdown
+  languageSelect.addEventListener('change', e => {
+    const lang = e.target.value;
+    document.querySelectorAll('[data-de]').forEach(el => {
+      if (el.dataset[lang]) el.innerHTML = el.dataset[lang];
+    });
+  });
+});
+
+// ===== Parallax & Box Observer =====
+const heroImg = document.querySelector('#hero img');
+const heroSection = document.querySelector('#hero');
+const boxes = document.querySelectorAll('.box');
+const arrow = document.getElementById('scroll-arrow');
+
+const parallaxSpeed = window.innerWidth < 900 ? 0.5 : 0.3;
+let ticking = false;
+let parallaxDone = false;
+
+// Observer für Boxen
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+
+function updateParallax() {
+  if (!heroSection || !heroImg) return;
+
+  const heroHeight = heroSection.offsetHeight;
+  const imageHeight = heroImg.offsetHeight;
+  if (!heroHeight || !imageHeight) return;
+
+  const heroTop = heroSection.getBoundingClientRect().top;
+  const overhang = imageHeight - heroHeight;
+
+  if (!parallaxDone) {
+    let scrolled = Math.min(-heroTop * parallaxSpeed, overhang);
+    scrolled = Math.max(scrolled, 0); // keine negativen Werte
+    heroImg.style.transform = `translate(-50%, ${-scrolled}px)`;
+
+    if (scrolled >= overhang) {
+      parallaxDone = true;
+      heroImg.style.transform = `translate(-50%, ${-overhang}px)`;
+      if (arrow) arrow.style.display = 'none';
+      boxes.forEach(box => observer.observe(box));
+    }
+  }
+
+  ticking = false;
+}
+
+function resetParallax() {
+  parallaxDone = false;
+  if (heroImg) heroImg.style.transform = 'translate(-50%, 0)';
+  if (arrow) arrow.style.display = '';
+  updateParallax();
+}
+
+// Initial & Event Listener
+window.addEventListener('resize', resetParallax);
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
+  }
+});
+
+// Stelle sicher, dass Parallax erst startet, wenn Bild geladen ist
+if (heroImg) {
+  if (heroImg.complete) {
+    updateParallax();
+  } else {
+    heroImg.addEventListener('load', updateParallax);
+  }
+}
+
+// ===== Scroll Arrow =====
+if (arrow) {
+  arrow.addEventListener('click', () => {
+    window.scrollBy({ top: 200, behavior: 'smooth' });
+  });
+}
+
+// ===== Hero Text einblenden =====
+window.addEventListener('load', () => {
+  const heroContent = document.querySelector('#hero-content');
+  if (heroContent) heroContent.classList.add('visible');
+});
 </script>
+
 
 </body>
 </html>
