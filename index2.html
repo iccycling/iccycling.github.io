@@ -83,6 +83,7 @@ h2::before {
   object-fit: cover;
   filter: blur(4px); /* gewünschter Blur */
   z-index: 0;
+  pointer-events: none; /* Bild ignoriert Touch/Click */
 }
 
 /* Hero Content Basis */
@@ -224,10 +225,7 @@ section {
   transform: translateY(0); 
 }
 
-.box:hover { 
-  transform: translateY(-5px); 
-  box-shadow: 0 20px 30px rgba(0,0,0,0.12); 
-}
+
 
 /* Zwei Boxen nebeneinander */
 
@@ -479,6 +477,19 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; }
            Workshops für Gruppen
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="box">
+      <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
+      <p data-de="Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen."
+         data-fr="Je suis Uli Kohl, coach pour le développement personnel et l’orientation. Mes valeurs : authenticité, clarté, confiance."
+         data-en="I am Uli Kohl, a coach for personal development and guidance. My values: authenticity, clarity, trust.">
+         Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen.
+      </p>
     </div>
   </div>
 </section>
