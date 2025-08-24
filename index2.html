@@ -1,626 +1,865 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coaching – Vorname Nachname</title>
-<!-- Optimierter Google Fonts Link -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;700&family=Montserrat:wght@500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome einbinden (nur notwendig Icons) -->
-<!-- Font Awesome einbinden (nur notwendig Icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-
-
-<style>
-
-/* Grundfarben & Fonts */
-:root {
-  --text: #2D2D2D;
-  --accent: #FF6F61;
-  --accent-hover: #E64B45;
-  --bg-body: #f5f5f5;  /* sehr helles Grau */
-   /* zartes Grau für den Hintergrund */
-  --bg-box: #ffffff;      /* Weiß für Boxen */
-  --title-font: "Playfair Display", serif;
-  --ui-font: "Inter", sans-serif;
-  --hero-text-dim: rgba(255,255,255,0.9);
-}
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-
-
-
-/* Überschriften */
-h2, h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight:700;
-  color:var(--text);
-  margin-bottom:1rem;
-}
-
-h2::before {
-  content:'';
-  display:inline-block;
-  width:50px;
-  height:4px;
-  background: var(--accent);
-  margin-right:10px;
-  vertical-align: middle;
-  border-radius:2px;
-}
-
-/* Hero */
-/* Hero Wrapper */
-#hero {
-  position: relative;
-  width: 100vw;
-  max-width: 1920px;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-   margin: 0 auto 4rem auto; /* unten 4rem Abstand */
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Content vertikal zentriert */
-}
-
-/* Hero Bild */
-#hero img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(4px); /* gewünschter Blur */
-  z-index: 0;
-  pointer-events: none; /* Bild ignoriert Touch/Click */
-}
-
-/* Hero Content Basis */
-#hero-content {
-  position: relative;
-  z-index: 2; /* über dem Bild */
-  opacity: 0;             /* Start: unsichtbar */
-  transition: opacity 1.2s ease; /* weiches Einblenden */
-  will-change: transform; /* für Parallax */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%; /* vertikal mittig */
-  text-align: center;
-  padding: 1rem;
-}
-
-/* Sichtbar beim Laden */
-#hero-content.load-visible {
-  opacity: 1;
-}
-
-
-
-/* Mobile */
-@media (max-width: 900px) {
-  #hero { aspect-ratio: 1/1; }
-  #hero img { width: 100%; height: 100%; }
-}
-
-#hero-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-title {
-  font-family: var(--title-font);
-  font-weight:700;
-  font-size:clamp(40px,8vw,92px);
-  margin:0 0 0.25em;
-  text-shadow:0 8px 30px rgba(0,0,0,0.45);
-}
-
-.subtitle {
-  margin:0 0 1.25em;
-  font-family: var(--ui-font);
-  font-weight:400;
-  font-size:clamp(20px,2.6vw,36px);
-  line-height:1.3;
-  color: var(--hero-text-dim);
-  letter-spacing:0.2px;
-  text-wrap: balance;
-}
-
-/* Scroll Arrow */
-#scroll-arrow {
-  position:absolute;
-  bottom:1rem;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:2rem;
-  color:white;
-  animation:bounce 1.5s infinite;
-  z-index:2;
-  cursor:pointer;
-}
-
-@keyframes bounce {
-  0%,100% { transform:translateX(-50%) translateY(0); }
-  50% { transform:translateX(-50%) translateY(10px); }
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;      /* besser als block, passt sich Textbreite an */
-  background: var(--accent);
-  color: white;               /* keine Variable var(--btn-text), sonst undefiniert */
-  padding: 0.75rem 1.5rem;   /* etwas größer */
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-align: center;
-  margin: 1.5rem auto 0 auto;
-  text-decoration: none;      /* kein Unterstrich */
-  transition: background 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;        /* verhindert Umbruch */
-}
-
-
-.btn:hover {
-  background: var(--accent-hover);
-  transform:translateY(-2px);
-}
-
-section {
-  width: 100%;      /* statt 100vw */
-  padding: 0rem;    /* bleibt */
-  margin: 0 auto;   /* keine Seitenscrolls mehr */
-  overflow-x: hidden; /* Sicherheit */
-}
-/* Boxen */
-/* Allgemeine Boxen */
-.box {
-  background: var(--bg-box);
-  border-radius: 9px;
-  box-shadow: 0 15px 25px rgba(0,0,0,0.08);
-  padding: 2rem;
-  margin-bottom: 2rem; /* vertikaler Abstand zu allen nachfolgenden Elementen */
-  max-width: 100%;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-/* Zwei Boxen nebeneinander */
-.two-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; /* horizontaler und vertikaler Abstand zwischen den Boxen */
-}
-
-.two-boxes .box {
-  flex: 1 1 calc(50% - 1rem);
-  max-width: calc(50% - 1rem);
-}
-
-/* Mobile: Boxen untereinander, volle Breite */
-@media (max-width: 900px) {
-  .two-boxes {
-    flex-direction: column;
-    gap: 0; /* vertikaler Abstand übernimmt margin-bottom der Boxen */
-  }
-  .two-boxes .box {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-.box.visible { 
-  opacity: 1; 
-  transform: translateY(0); 
-}
-
-
-
-/* Zwei Boxen nebeneinander */
-
-
-
-
-
-
-/* Bilder in Boxen */
-.two-boxes .box img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-/* Container */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Body & Grundlayout */
-body {
-  margin:0;
-  font-family:'Lora', serif;
-  color:var(--text);
-  line-height:1.6;
-  scroll-behavior:smooth;
-  background: var(--bg-body);
-}
-
-/* Header & Navigation */
-header {
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  background: rgba(255,255,255,0.95);
-  border-bottom:1px solid #ddd;
-  padding:0.8rem 2rem;
-  display:flex;
-  align-items:center;
-  z-index:1000;
-}
-
-.logo {
-  font-weight:bold;
-}
-
-/* Desktop Navigation */
-.nav-links {
-  display:flex;
-  gap:2rem;
-  margin-left:auto; /* Navigation nach rechts schieben */
-}
-
-.nav-links a {
-  font-weight:600;
-  color: var(--text);
-  text-decoration:none;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-/* Burger-Icon */
-.burger {
-  display:none; /* standardmäßig ausgeblendet */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  gap: 5px;
-  margin-left:auto; /* immer rechts im Header */
-}
-
-.burger div {
-  width:25px;
-  height:3px;
-  background: var(--text);
-  border-radius:2px;
-}
-
-/* Burger Menü aktiv */
-.nav-links.nav-open {
-  display:flex !important;
-  position:absolute; 
-  top:60px; 
-  right:2rem; 
-  background:white; 
-  padding:1rem; 
-  border-radius:5px; 
-  box-shadow:0 2px 10px rgba(0,0,0,0.15); 
-  flex-direction:column; 
-  gap:0.8rem; 
-}
-
-/* Responsive für kleine Bildschirme */
-@media (max-width:900px) {
-  .nav-links { display:none; } /* Desktop-Navigation ausblenden */
-  .burger { display:flex; }   /* Burger sichtbar */
-}
-
-/* Language Dropdown */
-.language-dropdown { position:relative; margin-left:2rem; font-weight:600; }
-.language-dropdown button { background:none; border:1px solid var(--text); border-radius:5px; padding:0.3rem 0.6rem; cursor:pointer; color:var(--text); }
-.language-dropdown ul {
-  position:absolute; top:100%; left:0;
-  background:white; border:1px solid #ccc; border-radius:5px;
-  padding:0; margin:0; list-style:none; display:none; width:100%; z-index:1000;
-}
-.language-dropdown ul li { padding:0.5rem; cursor:pointer; }
-.language-dropdown ul li:hover { background:var(--accent); color:white; }
-.language-dropdown.active ul { display:block; }
-
-/* Forms */
-form { display:flex; flex-direction:column; gap:1rem; }
-input, textarea { padding:0.75rem; border:1px solid #ccc; border-radius:5px; font-size:1rem; }
-button { background:var(--accent); color:white; padding:0.75rem; border:none; border-radius:5px; font-size:1rem; cursor:pointer; font-weight:600; }
-button:hover { background: var(--accent-hover); }
-
-/* Kontakt-Einladung volle Breite */
-/* Kontakt-Einladung volle Breite */
-#contact {
-  background-color: #FF7B66; /* heller, freundlicher Orange-Ton */
-  color: #2D2D2D; /* Kontrastfarbe für normalen Text */
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 1.1rem;
-  border-radius: 6px 6px 0 0; /* sanfte Abrundung oben */
-}
-
-#contact a {
-  display: inline-flex;          /* Icon + Text auf einer Linie */
-  align-items: center;           /* vertikal mittig ausrichten */
-  gap: 0.5rem;                   /* Abstand zwischen Icon und Adresse */
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-#contact a:hover {
-  color: #FFD3CB;
-}
-
-#contact i.fa-envelope {
-  font-size: 1.1em;              /* Icon-Größe */
-}
-
-
-
-
-
-/* Footer */
-footer { text-align:center; padding:2rem; font-size:0.9rem; }
-
-
-
-/* Utility */
-@media (prefers-reduced-motion: reduce) {
-  * { transition:none !important; animation:none !important; }
-}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="logo"><strong>Kaida</strong></div>
-  <nav class="nav-links">
-    <a href="#hero" data-de="Start" data-fr="Accueil" data-en="Home">Start</a>
-    <a href="#about" data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</a>
-    <a href="#methods" data-de="Methoden" data-fr="Méthodes" data-en="Methods">Methoden</a>
-    <a href="#approach" data-de="Ablauf" data-fr="Processus" data-en="Approach">Ablauf</a>
-    <a href="#testimonials" data-de="Feedback" data-fr="Témoignages" data-en="Testimonials">Feedback</a>
-    <a href="#contact" data-de="Kontakt" data-fr="Contact" data-en="Contact">Kontakt</a>
-
-    <select id="language-select">
-      <option value="de" selected>🇩🇪 Deutsch</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="en">🇬🇧 English</option>
-    </select>
-  </nav>
-
-  <div class="burger">
-    <div></div><div></div><div></div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section id="hero">
-  <img src="coaching_website/walk.jpg" alt="Hero Image">
-  <div id="hero-content">
-    <h1 class="hero-title" data-de="Kaida" data-fr="Kaida" data-en="Kaida">Kaida</h1>
-    <p class="subtitle" 
-       data-de="Persönliches Coaching & Begleitung" 
-       data-fr="Coaching personnalisé & accompagnement" 
-       data-en="Personal Coaching & Guidance">
-       Persönliches Coaching & Begleitung
-    </p>
-    <a href="#contact" class="btn"
-       data-de="Jetzt Kontakt aufnehmen"
-       data-fr="Contactez-moi maintenant"
-       data-en="Get in touch now">Jetzt Kontakt aufnehmen</a>
-  </div>
-  <div id="scroll-arrow" aria-hidden="true">&#x2193;</div>
-</section>
-
-<!-- GROSSE BOX -->
-<section id="about">
-  <div class="container">
-    <div class="box">
-      <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
-      <p data-de="Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen."
-         data-fr="Je suis Uli Kohl, coach pour le développement personnel et l’orientation. Mes valeurs : authenticité, clarté, confiance."
-         data-en="I am Uli Kohl, a coach for personal development and guidance. My values: authenticity, clarity, trust.">
-         Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ZWEI KLEINE BOXEN NEBENEINANDER -->
-<section id="methods">
-  <div class="container">
-    <div class="two-boxes">
-      <div class="box">
-        <img src="coaching_website/saar-wandern.jpg" alt="Methode 1">
-        <h2 data-de="Methode 1" data-fr="Méthode 1" data-en="Method 1">Methode 1</h2>
-        <p data-de="Zielorientiertes Einzelcoaching"
-           data-fr="Coaching individuel orienté objectifs"
-           data-en="Goal-oriented personal coaching">
-           Zielorientiertes Einzelcoaching
-        </p>
-      </div>
-      <div class="box">
-         <a id="approach"></a>
-        <img src="coaching_website/about.jpg" alt="Methode 2">
-        <h2 data-de="Methode 2" data-fr="Méthode 2" data-en="Method 2">Methode 2</h2>
-        <p data-de="Workshops für Gruppen"
-           data-fr="Ateliers pour groupes"
-           data-en="Workshops for groups">
-           Workshops für Gruppen
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="container">
-    <div class="box">
-      <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
-      <p data-de="Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen."
-         data-fr="Je suis Uli Kohl, coach pour le développement personnel et l’orientation. Mes valeurs : authenticité, clarté, confiance."
-         data-en="I am Uli Kohl, a coach for personal development and guidance. My values: authenticity, clarity, trust.">
-         Ich bin Uli Kohl, Coach für persönliche Entwicklung und Orientierung. Meine Werte: Authentizität, Klarheit, Vertrauen.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Kontakt-Einladung -->
-<section id="contact">
-  <div class="container">
-    <p 
-       data-de="Ich freue mich darauf, von Ihnen zu hören!<br><a href='mailto:kontakt@kaida.de'><i class='fa-solid fa-envelope'></i> kontakt@kaida.de</a>"
-       data-fr="Je serais ravi de recevoir votre message !<br><a href='mailto:contact@kaida.de'><i class='fa-solid fa-envelope'></i> contact@kaida.de</a>"
-       data-en="I look forward to hearing from you!<br><a href='mailto:contact@kaida.de'><i class='fa-solid fa-envelope'></i> contact@kaida.de</a>">
-       Ich freue mich darauf, von Ihnen zu hören!<br>
-       <a href="mailto:kontakt@kaida.de"><i class="fa-solid fa-envelope"></i> kontakt@kaida.de</a>
-    </p>
-  </div>
-</section>
-
-
-
-
-
-<footer>
-  <p data-de="© 2025 Uli Kohl · Impressum · Datenschutz"
-     data-fr="© 2025 Uli Kohl · Mentions légales · Politique de confidentialité"
-     data-en="© 2025 Uli Kohl · Imprint · Privacy Policy">
-     © 2025 Uli Kohl · Impressum · Datenschutz
-  </p>
-</footer>
-
-
-
-
-<script>
-// ===== Burger Menü =====
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('nav');
-
-if (burger && nav) {
-  burger.addEventListener('click', () => {
-    nav.classList.toggle('nav-open');
-  });
-
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      nav.classList.remove('nav-open');
-
-      const targetId = link.getAttribute('href').substring(1);
-      const targetEl = document.getElementById(targetId);
-      if (!targetEl) return;
-
-      const header = document.querySelector('header');
-      let headerOffset = 0;
-
-      // Fallback: nur berücksichtigen, wenn Header nicht transparent oder sticky ist
-      if (header && window.getComputedStyle(header).position !== "static") {
-        headerOffset = header.offsetHeight;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching – Vorname Nachname</title>
+  <!-- Optimierter Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;700&family=Montserrat:wght@500;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome einbinden (nur notwendig Icons) -->
+  <!-- Font Awesome einbinden (nur notwendig Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+
+
+  <style>
+    /* Grundfarben & Fonts */
+    :root {
+      --text: #2D2D2D;
+      --accent: #FF6F61;
+      --accent-hover: #E64B45;
+      --bg-body: #f5f5f5;
+      /* sehr helles Grau */
+      /* zartes Grau für den Hintergrund */
+      --bg-box: #ffffff;
+      /* Weiß für Boxen */
+      --title-font: "Playfair Display", serif;
+      --ui-font: "Inter", sans-serif;
+      --hero-text-dim: rgba(255, 255, 255, 0.9);
+    }
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+
+
+
+    /* Überschriften */
+    h2,
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 50px;
+      height: 4px;
+      background: var(--accent);
+      margin-right: 10px;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    /* Hero Wrapper */
+    #hero {
+      position: relative;
+      width: 100vw;
+      max-width: 1920px;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      margin: 0 auto 4rem auto;
+      /* unten 4rem Abstand */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Content vertikal zentriert */
+    }
+
+    /* Hero Bild */
+    #hero img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px);
+      /* gewünschter Blur */
+      z-index: 0;
+      pointer-events: none;
+      /* Bild ignoriert Touch/Click */
+    }
+
+    /* Hero Content Basis */
+    #hero-content {
+      position: relative;
+      z-index: 2;
+      /* über dem Bild */
+      opacity: 0;
+      /* Start: unsichtbar */
+      transition: opacity 1.2s ease;
+      /* weiches Einblenden */
+      will-change: transform;
+      /* für Parallax */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      /* vertikal mittig */
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Sichtbar beim Laden */
+    #hero-content.load-visible {
+      opacity: 1;
+    }
+
+
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      #hero {
+        aspect-ratio: 1/1;
       }
 
-      const elementPosition = targetEl.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      #hero img {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    });
-  });
+    #hero-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-title {
+      font-family: var(--title-font);
+      font-weight: 700;
+      font-size: clamp(40px, 8vw, 92px);
+      margin: 0 0 0.25em;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .subtitle {
+      margin: 0 0 1.25em;
+      font-family: var(--ui-font);
+      font-weight: 400;
+      font-size: clamp(20px, 2.6vw, 36px);
+      line-height: 1.3;
+      color: var(--hero-text-dim);
+      letter-spacing: 0.2px;
+      text-wrap: balance;
+    }
+
+    /* Scroll Arrow */
+    #scroll-arrow {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: white;
+      animation: bounce 1.5s infinite;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      /* besser als block, passt sich Textbreite an */
+      background: var(--accent);
+      color: white;
+      /* keine Variable var(--btn-text), sonst undefiniert */
+      padding: 0.75rem 1.5rem;
+      /* etwas größer */
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      margin: 1.5rem auto 0 auto;
+      text-decoration: none;
+      /* kein Unterstrich */
+      transition: background 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+      /* verhindert Umbruch */
+    }
+
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    section {
+      width: 100%;
+      /* statt 100vw */
+      padding: 0rem;
+      /* bleibt */
+      margin: 0 auto;
+      /* keine Seitenscrolls mehr */
+      overflow-x: hidden;
+      /* Sicherheit */
+    }
+
+    /* Boxen */
+    /* Allgemeine Boxen */
+    .box {
+      background: var(--bg-box);
+      border-radius: 9px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      /* vertikaler Abstand zu allen nachfolgenden Elementen */
+      max-width: 100%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    /* Zwei Boxen nebeneinander */
+    .two-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      /* horizontaler und vertikaler Abstand zwischen den Boxen */
+    }
+
+    .two-boxes .box {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+
+    /* Mobile: Boxen untereinander, volle Breite */
+    @media (max-width: 900px) {
+      .two-boxes {
+        flex-direction: column;
+        gap: 0;
+        /* vertikaler Abstand übernimmt margin-bottom der Boxen */
+      }
+
+      .two-boxes .box {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    .box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+    /* Zwei Boxen nebeneinander */
+
+
+
+
+
+
+    /* Bilder in Boxen */
+    .two-boxes .box img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Body & Grundlayout */
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      background: var(--bg-body);
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #ddd;
+      padding: 0.8rem 2rem;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      margin-left: auto;
+      /* Navigation nach rechts schieben */
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Burger-Icon */
+    .burger {
+      display: none;
+      /* standardmäßig ausgeblendet */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      gap: 5px;
+      margin-left: auto;
+      /* immer rechts im Header */
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    /* Burger Menü aktiv */
+    .nav-links.nav-open {
+      display: flex !important;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    /* Responsive für kleine Bildschirme */
+    @media (max-width:900px) {
+      .nav-links {
+        display: none;
+      }
+
+      /* Desktop-Navigation ausblenden */
+      .burger {
+        display: flex;
+      }
+
+      /* Burger sichtbar */
+    }
+
+    /* Language Dropdown */
+    .language-dropdown {
+      position: relative;
+      margin-left: 2rem;
+      font-weight: 600;
+    }
+
+    .language-dropdown button {
+      background: none;
+      border: 1px solid var(--text);
+      border-radius: 5px;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .language-dropdown ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: none;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .language-dropdown ul li {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .language-dropdown ul li:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .language-dropdown.active ul {
+      display: block;
+    }
+
+    /* Forms */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Kontakt-Einladung volle Breite */
+    /* Kontakt-Einladung volle Breite */
+    #contact {
+      background-color: #FF7B66;
+      /* heller, freundlicher Orange-Ton */
+      color: #2D2D2D;
+      /* Kontrastfarbe für normalen Text */
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 6px 6px 0 0;
+      /* sanfte Abrundung oben */
+    }
+
+    #contact a {
+      display: inline-flex;
+      /* Icon + Text auf einer Linie */
+      align-items: center;
+      /* vertikal mittig ausrichten */
+      gap: 0.5rem;
+      /* Abstand zwischen Icon und Adresse */
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #FFD3CB;
+    }
+
+    #contact i.fa-envelope {
+      font-size: 1.1em;
+      /* Icon-Größe */
+    }
+
+    /* Über mich innerhalb Box */
+    .about-box .about-flex {
+      display: flex;
+      align-items: stretch;
+      /* beide gleich hoch */
+      gap: 2rem;
+    }
+
+    /* Portrait-Spalte */
+    .about-box .about-img {
+      flex: 0 0 250px;
+      /* fixe Breite, kannst du anpassen */
+      display: flex;
+      /* damit Bild sich strecken darf */
+    }
+
+    .about-box .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* füllt den Container, cropt querformatig */
+      border-radius: 6px;
+    }
+
+    /* Textbereich */
+    .about-box .about-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .about-box .about-flex {
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .about-box .about-img {
+        width: 100%;
+        height: auto;
+        /* Bildhöhe frei */
+      }
+
+      .about-box .about-img img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 0rem;
+      }
+    }
+
+    /* Icon Styling */
+    .box-icon {
+      display: block;
+      /* wird wie ein Block behandelt */
+      margin-left: auto;
+      /* links automatisch */
+      margin-right: auto;
+      /* rechts automatisch → zentriert */
+      margin-bottom: 1rem;
+      /* Abstand nach unten */
+      text-align: center;
+      /* falls das Icon intern extra Breite hat */
+      color: var(--accent);
+      font-size: 3rem;
+      width: fit-content;
+      /* sorgt dafür, dass das Icon nur so breit ist wie nötig */
+    }
+
+.more-link {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
 }
 
-// ===== Sprache automatisch auswählen =====
-document.addEventListener('DOMContentLoaded', () => {
-  const languageSelect = document.getElementById('language-select');
-  if(!languageSelect) return;
-
-  const userLang = navigator.language.slice(0, 2);
-  const supportedLangs = ['de', 'fr', 'en'];
-  const defaultLang = supportedLangs.includes(userLang) ? userLang : 'de';
-
-  languageSelect.value = defaultLang;
-
-  document.querySelectorAll('[data-de]').forEach(el => {
-    if (el.dataset[defaultLang]) el.innerHTML = el.dataset[defaultLang];
-  });
-
-  languageSelect.addEventListener('change', e => {
-    const lang = e.target.value;
-    document.querySelectorAll('[data-de]').forEach(el => {
-      if (el.dataset[lang]) el.innerHTML = el.dataset[lang];
-    });
-  });
-});
-
-// ===== Parallax für Hero Content =====
-const heroContent = document.querySelector('#hero-content');
-window.addEventListener('scroll', () => {
-  if (!heroContent) return;
-  const scrollY = window.scrollY;
-  const speed = 0.3;
-  heroContent.style.transform = `translateY(${-scrollY * speed}px)`;
-});
-
-// ===== Box Observer =====
-const boxes = document.querySelectorAll('.box');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.5 });
-
-boxes.forEach(box => observer.observe(box));
-
-// ===== Hero Content einblenden beim Laden =====
-window.addEventListener('load', () => {
-  if (heroContent) heroContent.classList.add('load-visible');
-});
-
-// ===== Scroll-Pfeil Funktion =====
-const scrollArrow = document.querySelector('#scroll-arrow'); 
-if (scrollArrow) {
-  scrollArrow.addEventListener('click', e => {
-    e.preventDefault();
-    window.scrollBy({ top: 200, left: 0, behavior: 'smooth' });
-  });
+.more-link::before {
+  content: "\f061"; /* Font Awesome Pfeil: fa-arrow-right */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* solid style */
+  margin-right: 0.3rem;
+  display: inline-block;
 }
 
-</script>
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+
+
+    /* Utility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="#hero" style="text-decoration:none; color:inherit;">
+        <strong>Kaida</strong>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="#hero" data-de="Start" data-fr="Accueil" data-en="Home">Start</a>
+      <a href="#about" data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</a>
+      <a href="#methods" data-de="Methoden" data-fr="Méthodes" data-en="Methods">Methoden</a>
+      <a href="#approach" data-de="Ablauf" data-fr="Processus" data-en="Approach">Ablauf</a>
+      <a href="#testimonials" data-de="Feedback" data-fr="Témoignages" data-en="Testimonials">Feedback</a>
+      <a href="#contact" data-de="Kontakt" data-fr="Contact" data-en="Contact">Kontakt</a>
+
+      <select id="language-select">
+        <option value="de" selected>🇩🇪 Deutsch</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </nav>
+
+    <div class="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <img src="coaching_website/walk.jpg" alt="Hero Image">
+    <div id="hero-content">
+      <h1 class="hero-title" data-de="Kaida" data-fr="Kaida" data-en="Kaida">Kaida</h1>
+      <p class="subtitle" data-de="Persönliches Coaching & Begleitung" data-fr="Coaching personnalisé & accompagnement"
+        data-en="Personal Coaching & Guidance">
+        Persönliches Coaching & Begleitung
+      </p>
+      <a href="#contact" class="btn" data-de="Jetzt Kontakt aufnehmen" data-fr="Contactez-moi maintenant"
+        data-en="Get in touch now">Jetzt Kontakt aufnehmen</a>
+    </div>
+    <div id="scroll-arrow" aria-hidden="true">&#x2193;</div>
+  </section>
+
+
+  <!-- GROSSE BOX: ABOUT -->
+  <!-- GROSSE BOX: ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="box about-box">
+        <div class="about-flex">
+          <!-- Portrait innerhalb der Box -->
+          <div class="about-img">
+            <img src="coaching_website/portrait.webp" alt="Portrait Uli Kohl">
+          </div>
+          <div class="about-text">
+            <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
+            <p data-de="Ich bin Uli Kohl, Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit."
+              data-fr="Je suis Uli Kohl, coach en développement personnel. J'aide les gens à découvrir leurs forces et à poursuivre clairement leurs objectifs. Valeurs : authenticité, confiance, clarté."
+              data-en="I am Uli Kohl, a personal development coach. I help people discover their strengths and pursue their goals with clarity. Values: authenticity, trust, clarity.">
+              Ich bin Uli Kohl, Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und
+              klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit.
+            </p>
+            <a href="#zielseite" class="more-link" data-de="Mehr erfahren" data-fr="En savoir plus" data-en="Learn more">
+  <span class="more-text">Mehr erfahren</span>
+</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ZWEI KLEINE BOXEN NEBENEINANDER: METHODE + ABLAUF -->
+  <section id="methods">
+    <div class="container">
+      <div class="two-boxes">
+        <!-- Methode -->
+        <div class="box">
+          <i class="fa-solid fa-lightbulb fa-3x box-icon"></i>
+          <h2 data-de="Methode" data-fr="Méthode" data-en="Method">Methode</h2>
+          <p data-de="Persönliches Einzelcoaching, maßgeschneidert auf Ihre Ziele. Wir erarbeiten Strategien für Entwicklung und Wachstum."
+            data-fr="Coaching individuel, adapté à vos objectifs. Nous élaborons des stratégies pour le développement et la croissance."
+            data-en="Personal one-on-one coaching, tailored to your goals. We develop strategies for growth and development.">
+            Persönliches Einzelcoaching, maßgeschneidert auf Ihre Ziele. Wir erarbeiten Strategien für Entwicklung und
+            Wachstum.
+          </p>
+        </div>
+        <!-- Ablauf / Approach -->
+        <div class="box" id="approach">
+          <i class="fa-solid fa-people-group fa-3x box-icon"></i>
+          <h2 data-de="Ablauf" data-fr="Processus" data-en="Approach">Ablauf</h2>
+          <p data-de="Gruppenworkshops, in denen Zusammenarbeit, Kreativität und gegenseitige Unterstützung im Vordergrund stehen."
+            data-fr="Ateliers de groupe axés sur la collaboration, la créativité et le soutien mutuel."
+            data-en="Group workshops focusing on collaboration, creativity, and mutual support.">
+            Gruppenworkshops, in denen Zusammenarbeit, Kreativität und gegenseitige Unterstützung im Vordergrund stehen.
+          </p>
+          <a href="#zielseite" class="more-link" data-de="Mehr erfahren" data-fr="En savoir plus" data-en="Learn more">
+  <span class="more-text">Mehr erfahren</span>
+</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="box">
+        <h2 data-de="Feedback" data-fr="Témoignages" data-en="Testimonials">Feedback</h2>
+        <p data-de="Uli hat mir geholfen, Klarheit über meine Ziele zu bekommen und selbstbewusster Entscheidungen zu treffen. – Max M."
+          data-fr="Uli m'a aidé à clarifier mes objectifs et à prendre des décisions avec plus de confiance. – Max M."
+          data-en="Uli helped me clarify my goals and make decisions with greater confidence. – Max M.">
+          Uli hat mir geholfen, Klarheit über meine Ziele zu bekommen und selbstbewusster Entscheidungen zu treffen. –
+          Max M.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Kontakt-Einladung -->
+  <section id="contact">
+    <div class="container">
+      <p data-de="Ich freue mich darauf, von Ihnen zu hören!<br><a href='mailto:kontakt@kaida.de'><i class='fa-solid fa-envelope'></i> kontakt@kaida.de</a>"
+        data-fr="Je serais ravi de recevoir votre message !<br><a href='mailto:contact@kaida.de'><i class='fa-solid fa-envelope'></i> contact@kaida.de</a>"
+        data-en="I look forward to hearing from you!<br><a href='mailto:contact@kaida.de'><i class='fa-solid fa-envelope'></i> contact@kaida.de</a>">
+        Ich freue mich darauf, von Ihnen zu hören!<br>
+        <a href="mailto:kontakt@kaida.de"><i class="fa-solid fa-envelope"></i> kontakt@kaida.de</a>
+      </p>
+    </div>
+  </section>
+
+
+
+
+
+  <footer>
+    <p data-de="© 2025 Uli Kohl · Impressum · Datenschutz"
+      data-fr="© 2025 Uli Kohl · Mentions légales · Politique de confidentialité"
+      data-en="© 2025 Uli Kohl · Imprint · Privacy Policy">
+      © 2025 Uli Kohl · Impressum · Datenschutz
+    </p>
+  </footer>
+
+
+
+
+  <script>
+    // ===== Burger Menü =====
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('nav');
+
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          nav.classList.remove('nav-open');
+
+          const targetId = link.getAttribute('href').substring(1);
+          const targetEl = document.getElementById(targetId);
+          if (!targetEl) return;
+
+          const header = document.querySelector('header');
+          let headerOffset = 0;
+
+          // Fallback: nur berücksichtigen, wenn Header nicht transparent oder sticky ist
+          if (header && window.getComputedStyle(header).position !== "static") {
+            headerOffset = header.offsetHeight;
+          }
+
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // ===== Sprache automatisch auswählen =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const languageSelect = document.getElementById('language-select');
+      if (!languageSelect) return;
+
+      const userLang = navigator.language.slice(0, 2);
+      const supportedLangs = ['de', 'fr', 'en'];
+      const defaultLang = supportedLangs.includes(userLang) ? userLang : 'de';
+
+      languageSelect.value = defaultLang;
+
+      document.querySelectorAll('[data-de]').forEach(el => {
+        if (el.dataset[defaultLang]) el.innerHTML = el.dataset[defaultLang];
+      });
+
+      languageSelect.addEventListener('change', e => {
+        const lang = e.target.value;
+        document.querySelectorAll('[data-de]').forEach(el => {
+          if (el.dataset[lang]) el.innerHTML = el.dataset[lang];
+        });
+      });
+    });
+
+    // ===== Parallax für Hero Content =====
+    const heroContent = document.querySelector('#hero-content');
+    window.addEventListener('scroll', () => {
+      if (!heroContent) return;
+      const scrollY = window.scrollY;
+      const speed = 0.3;
+      heroContent.style.transform = `translateY(${-scrollY * speed}px)`;
+    });
+
+    // ===== Box Observer =====
+    const boxes = document.querySelectorAll('.box');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.5 });
+
+    boxes.forEach(box => observer.observe(box));
+
+    // ===== Hero Content einblenden beim Laden =====
+    window.addEventListener('load', () => {
+      if (heroContent) heroContent.classList.add('load-visible');
+    });
+
+    // ===== Scroll-Pfeil Funktion =====
+    const scrollArrow = document.querySelector('#scroll-arrow');
+    if (scrollArrow) {
+      scrollArrow.addEventListener('click', e => {
+        e.preventDefault();
+        window.scrollBy({ top: 200, left: 0, behavior: 'smooth' });
+      });
+    }
+
+  </script>
 
 
 
 </body>
+
 </html>
