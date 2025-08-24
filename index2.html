@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coaching – Vorname Nachname</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<!-- Optimierter Google Fonts Link -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;700&family=Montserrat:wght@500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
 <!-- Font Awesome einbinden (nur notwendig Icons) -->
 <!-- Font Awesome einbinden (nur notwendig Icons) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -159,17 +160,20 @@ h2::before {
 
 /* Buttons */
 .btn {
-  display:block;
+  display: inline-block;      /* besser als block, passt sich Textbreite an */
   background: var(--accent);
-  color: var(--btn-text);
-  padding:0.5rem 1rem;
-  border-radius:6px;
-  font-weight:600;
-  max-width:220px;
-  text-align:center;
-  margin:1.5rem auto 0 auto;
+  color: white;               /* keine Variable var(--btn-text), sonst undefiniert */
+  padding: 0.75rem 1.5rem;   /* etwas größer */
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  margin: 1.5rem auto 0 auto;
+  text-decoration: none;      /* kein Unterstrich */
   transition: background 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;        /* verhindert Umbruch */
 }
+
 
 .btn:hover {
   background: var(--accent-hover);
@@ -355,7 +359,7 @@ button:hover { background: var(--accent-hover); }
 
 /* Kontakt-Einladung volle Breite */
 /* Kontakt-Einladung volle Breite */
-#contact-invite {
+#contact {
   background-color: #FF7B66; /* heller, freundlicher Orange-Ton */
   color: #2D2D2D; /* Kontrastfarbe für normalen Text */
   padding: 2rem 1rem;
@@ -364,7 +368,7 @@ button:hover { background: var(--accent-hover); }
   border-radius: 6px 6px 0 0; /* sanfte Abrundung oben */
 }
 
-#contact-invite a {
+#contact a {
   display: inline-flex;          /* Icon + Text auf einer Linie */
   align-items: center;           /* vertikal mittig ausrichten */
   gap: 0.5rem;                   /* Abstand zwischen Icon und Adresse */
@@ -374,11 +378,11 @@ button:hover { background: var(--accent-hover); }
   transition: color 0.3s ease;
 }
 
-#contact-invite a:hover {
+#contact a:hover {
   color: #FFD3CB;
 }
 
-#contact-invite i.fa-envelope {
+#contact i.fa-envelope {
   font-size: 1.1em;              /* Icon-Größe */
 }
 
@@ -469,6 +473,7 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; }
         </p>
       </div>
       <div class="box">
+         <a id="approach"></a>
         <img src="coaching_website/about.jpg" alt="Methode 2">
         <h2 data-de="Methode 2" data-fr="Méthode 2" data-en="Method 2">Methode 2</h2>
         <p data-de="Workshops für Gruppen"
@@ -481,7 +486,7 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; }
   </div>
 </section>
 
-<section id="about">
+<section id="testimonials">
   <div class="container">
     <div class="box">
       <h2 data-de="Über mich" data-fr="À propos" data-en="About Me">Über mich</h2>
@@ -495,7 +500,7 @@ footer { text-align:center; padding:2rem; font-size:0.9rem; }
 </section>
 
 <!-- Kontakt-Einladung -->
-<section id="contact-invite">
+<section id="contact">
   <div class="container">
     <p 
        data-de="Ich freue mich darauf, von Ihnen zu hören!<br><a href='mailto:kontakt@kaida.de'><i class='fa-solid fa-envelope'></i> kontakt@kaida.de</a>"
