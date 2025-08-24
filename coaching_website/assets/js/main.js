@@ -99,6 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scrollArrow) {
       scrollArrow.addEventListener('click', e => {
         e.preventDefault();
-        window.scrollBy({ top: 400, left: 0, behavior: 'smooth' });
+        window.scrollBy({ top: 500, left: 0, behavior: 'smooth' });
       });
     }
