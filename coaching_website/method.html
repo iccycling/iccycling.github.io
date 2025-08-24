@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detailseite – Kaida</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;700&family=Montserrat:wght@500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* Detail-Hero-Bild niedriger, ohne Parallax */
+    .detail-hero img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Header minimal für Detailseite */
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .detail-header .btn {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Box für Content */
+    .detail-box {
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="detail-header">
+    <a href="index.html" class="btn">← Home</a>
+    <select id="language-select">
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
+  </header>
+
+  <section class="detail-hero">
+    <img src="images/walk.jpg" alt="Detail Hero Image">
+  </section>
+
+  <section class="container">
+    <div class="box detail-box">
+      <h1 data-de="Beispiel Detailseite" data-fr="Page Détail Exemple" data-en="Example Detail Page">
+        Beispiel Detailseite
+      </h1>
+      <p data-de="Hier steht der Content der Detailseite auf Deutsch."
+         data-fr="Voici le contenu de la page de détail en français."
+         data-en="Here is the detail page content in English.">
+        Hier steht der Content der Detailseite auf Deutsch.
+      </p>
+      <p data-de="Noch mehr Text, um die Box zu füllen."
+         data-fr="Encore plus de texte pour remplir la boîte."
+         data-en="More text here to fill the box.">
+        Noch mehr Text, um die Box zu füllen.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p data-de="© 2025 Uli Kohl"
+       data-fr="© 2025 Uli Kohl"
+       data-en="© 2025 Uli Kohl">
+      © 2025 Uli Kohl · Impressum · Datenschutz
+    </p>
+  </footer>
+
+  <!-- Sprachwechsel JS -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
