@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+
+  <!-- Blue background -->
+  <rect width="600" height="600" fill="#0000CC"/>
+
+  <!-- ICCC white, centered with generous padding -->
+  <text x="300" y="358"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="155"
+    letter-spacing="-8"
+    font-style="italic"
+    fill="white">ICCC</text>
+
+</svg>

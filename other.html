@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Cycling — Imperial College Cycling Club</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Imperial College Cycling Club">
+<meta property="og:title" content="More Cycling - Imperial College Cycling Club">
+<meta property="og:description" content="Imperial College Cycling Club — road, gravel, and mountain biking in London.">
+<meta property="og:url" content="https://iccycling.github.io/other.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://iccycling.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iccycling.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" href="main.css">
+<style>
+  /* Compact discipline list — no photos, just text */
+  .disc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .disc-list-item {
+    background: var(--white);
+    padding: 36px 32px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: background 0.15s;
+  }
+  .disc-list-item:hover { background: var(--off); }
+  .disc-list-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--blue);
+  }
+  .disc-list-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.1rem; color: var(--black);
+  }
+  .disc-list-desc {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.65;
+    color: var(--gray);
+  }
+
+  /* Compact intro block */
+  .intro-block {
+    max-width: 640px;
+  }
+  .intro-block p {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: var(--gray);
+  }
+
+  @media (max-width: 640px) {
+    .disc-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ICCC.svg" alt="ICCC">
+  </a>
+  <ul class="nav-links">
+    <li><a href="road.html">Road</a></li>
+    <li><a href="offroad.html">MTB</a></li>
+    <li><a href="index.html#news">News</a></li>
+    <li><a href="club.html">About</a></li>
+  </ul>
+  <a href="club.html#join" class="nav-cta">Join</a>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer">
+  <ul>
+    <li><a href="road.html">Road Cycling</a></li>
+    <li><a href="offroad.html">Mountain Biking</a></li>
+    <li><a href="other.html" class="active">More Cycling</a></li>
+    <li><a href="index.html#news">News & Blog</a></li>
+    <li><a href="club.html">About</a></li>
+  </ul>
+  <a href="club.html#join" class="drawer-cta">Join the Club</a>
+</div>
+
+
+<!-- PAGE HERO — compact -->
+<section class="page-hero" style="height: 40vh; min-height: 280px;">
+    <img class="page-hero-bg" src="images/gravel-bg.jpg" alt="Bikepacking Stock Picture">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Imperial College Cycling Club</div>
+    <h1 class="page-hero-title">More Cycling</h1>
+  </div>
+</section>
+
+
+<!-- INTRO -->
+<section class="content-section">
+  <div class="intro-block">
+    <span class="label">Beyond Road & MTB</span>
+    <p>ICCC is built around road cycling and mountain biking, but the club is open to anyone who rides. Whether you commute, gravel ride, bikepack, spin indoors, or race track — there's a place for you here. No formal programmes yet for these disciplines, but your ideas and involvement help shape what the club becomes.</p>
+  </div>
+</section>
+
+
+<!-- DISCIPLINES GRID -->
+<section class="content-section bg-off" style="padding-top: 0;">
+  <div class="disc-list">
+
+    <div class="disc-list-item">
+      <div class="disc-list-tag">Urban</div>
+      <div class="disc-list-title">Urban & Commuter Cycling</div>
+      <p class="disc-list-desc">Daily rides through the city, fixies, cargo bikes, and everything in between. Cycling as transport and lifestyle — connect with other urban riders in the club.</p>
+    </div>
+
+    <div class="disc-list-item">
+      <div class="disc-list-tag">Adventure</div>
+      <div class="disc-list-title">Gravel & Bikepacking</div>
+      <p class="disc-list-desc">Quiet roads, mixed surfaces, overnight trips. If you love exploring off the beaten path, share your routes and adventures with the club and help kick off informal group rides.</p>
+    </div>
+
+    <div class="disc-list-item">
+      <div class="disc-list-tag">Indoor</div>
+      <div class="disc-list-title">Indoor Cycling</div>
+      <p class="disc-list-desc">Train on Wattbikes at Ethos Gym or a smart trainer at home. Flexible, weather-proof, and open to all levels — connect via Strava and share your rides with fellow members.</p>
+    </div>
+
+    <div class="disc-list-item">
+      <div class="disc-list-tag">Other</div>
+      <div class="disc-list-title">Track, BMX & Cyclocross</div>
+      <p class="disc-list-desc">Less represented at the club for now, but very welcome. If you ride track, BMX, or cyclocross — or want to get into it — get in touch and find other members with the same interest.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="join">
+  <div>
+    <h2>Your discipline, your ideas.</h2>
+    <p>The club is shaped by its members. If you want to see more of a certain type of riding at ICCC, the best way is to join and make it happen.</p>
+  </div>
+  <a href="club.html#join" class="btn-outline-white">Join the Club →</a>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">
+        <img src="images/ICCC-white.svg" alt="ICCC" style="height:24px; width:auto; opacity:0.85;">
+      </div>
+      <p class="footer-tagline">Imperial College Cycling Club — student-run. All levels welcome.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Ride</h4>
+      <ul>
+        <li><a href="road.html">Road Cycling</a></li>
+        <li><a href="offroad.html">Mountain Biking</a></li>
+        <li><a href="other.html">More Cycling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Club</h4>
+      <ul>
+        <li><a href="club.html">About</a></li>
+        <li><a href="club.html#join">Join</a></li>
+        <li><a href="club.html#alumni">Alumni</a></li>
+        <li><a href="club.html#support">Support Us</a></li>
+        <li><a href="/blog/news/">News & Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:cycle@imperial.ac.uk">cycle@imperial.ac.uk</a></li>
+        <li><a href="https://instagram.com/iccycling" target="_blank">@iccycling</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Imperial College Cycling Club 2025. All rights reserved.</span>
+    <span>Designed & built by <a href="/iccc-hub/authors/frederik-beck/">Frederik Beck</a> and others at ICCC</span>
+    <a href="privacy.html">Privacy & Legal</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

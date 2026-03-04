@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperial College Cycling Club</title>
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Imperial College Cycling Club">
+<meta property="og:title" content="Imperial College Cycling Club">
+<meta property="og:description" content="Imperial College Cycling Club — road, gravel, and mountain biking in London.">
+<meta property="og:url" content="https://iccycling.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://iccycling.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iccycling.github.io/og-image.jpg">
+
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ICCC.svg" alt="ICCC">
+  </a>
+  <ul class="nav-links">
+    <li><a href="road.html">Road</a></li>
+    <li><a href="offroad.html">MTB</a></li>
+    <li><a href="index.html#news">News</a></li>
+    <li><a href="club.html">About</a></li>
+  </ul>
+  <a href="club.html#join" class="nav-cta">Join</a>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer">
+  <ul>
+    <li><a href="road.html">Road Cycling</a></li>
+    <li><a href="offroad.html">Mountain Biking</a></li>
+    <li><a href="other.html">More Cycling</a></li>
+    <li><a href="index.html#news">News & Blog</a></li>
+    <li><a href="club.html">About</a></li>
+  </ul>
+  <a href="club.html#join" class="drawer-cta">Join the Club</a>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="images/YOUR-RACE-PHOTO.jpg" alt="ICCC Racing">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Imperial College · London</div>
+      <h1 class="hero-title">
+        Imperial<br>College<br>Cycling<br>Club
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-desc">
+        Student-run cycling club. Road, trails, bike parks. All levels welcome — just show up and ride.
+      </p>
+      <a href="club.html#join" class="btn-white">Join the Club</a>
+    </div>
+  </div>
+  <div class="hero-scroll-line"></div>
+</section>
+
+
+<!-- DISCIPLINES -->
+<div class="disciplines">
+  <a class="disc-item" href="road.html">
+    <div class="disc-number">01</div>
+    <div class="disc-title">Road Cycling</div>
+    <p class="disc-desc">Weekly group rides from city streets to Surrey hills. Casual to competitive — all paces welcome.</p>
+    <span class="disc-arrow">Learn more</span>
+  </a>
+  <a class="disc-item" href="offroad.html">
+    <div class="disc-number">02</div>
+    <div class="disc-title">Mountain Biking</div>
+    <p class="disc-desc">Local trails, singletrack, bike parks, and full-day adventures. No experience necessary.</p>
+    <span class="disc-arrow">Learn more</span>
+  </a>
+  <a class="disc-item" href="other.html">
+    <div class="disc-number">03</div>
+    <div class="disc-title">More Cycling</div>
+    <p class="disc-desc">Bikepacking, fixed gear, commuting, socials. If it has two wheels, there's a place for you here.</p>
+    <span class="disc-arrow">Learn more</span>
+  </a>
+</div>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-wrap">
+    <img src="images/4.jpg" alt="ICCC Group Ride">
+  </div>
+  <div class="about-content">
+    <span class="label">About the Club</span>
+    <h2>We ride.<br>We race.<br>We explore.</h2>
+    <p>ICCC is a student-led community at Imperial College London. Whether you're chasing a podium or your first group ride, there's a place for you. Powered by the Student Union.</p>
+    <div class="stats">
+      <div>
+        <div class="stat-n">40+</div>
+        <div class="stat-l">Members</div>
+      </div>
+      <div>
+        <div class="stat-n">3×</div>
+        <div class="stat-l">Weekly rides</div>
+      </div>
+      <div>
+        <div class="stat-n">2+</div>
+        <div class="stat-l">Disciplines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div>
+    <h2>Ready to ride?</h2>
+    <p>Join through the Imperial College Union. Membership gets you access to every ride, race, event, and social.</p>
+  </div>
+  <a href="club.html#join" class="btn-outline-white">Become a Member →</a>
+</section>
+
+
+<!-- NEWS + BLOG -->
+<section class="news" id="news">
+  <div class="section-header">
+    <h2>News & Blog</h2>
+  </div>
+  <div class="nb-layout">
+    <div class="nb-news">
+      <div class="nb-col-label">
+        <span>Latest News</span>
+        <a href="/iccc-hub/news/" class="text-link">All →</a>
+      </div>
+      <div class="nb-news-list" id="nb-news-list"></div>
+    </div>
+    <div class="nb-blog">
+      <div class="nb-col-label">
+        <span>From the Blog</span>
+        <a href="/iccc-hub/posts/" class="text-link">All posts →</a>
+      </div>
+      <div class="nb-blog-grid" id="nb-blog-grid"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INSTAGRAM -->
+<div class="instagram">
+  <div>
+    <div class="ig-handle">@iccycling</div>
+    <div class="ig-sub">Ride updates, kit drops, and club highlights.</div>
+  </div>
+  <a href="https://instagram.com/iccycling" target="_blank" class="text-link">Follow on Instagram →</a>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">
+        <img src="images/ICCC-white.svg" alt="ICCC" style="height:24px; width:auto; opacity:0.85;">
+      </div>
+      <p class="footer-tagline">Imperial College Cycling Club — student-run. All levels welcome.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Ride</h4>
+      <ul>
+        <li><a href="road.html">Road Cycling</a></li>
+        <li><a href="offroad.html">Mountain Biking</a></li>
+        <li><a href="other.html">More Cycling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Club</h4>
+      <ul>
+        <li><a href="club.html">About</a></li>
+        <li><a href="club.html#join">Join</a></li>
+        <li><a href="club.html#support">Support Us</a></li>
+        <li><a href="/blog/news/">News & Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:cycle@imperial.ac.uk">cycle@imperial.ac.uk</a></li>
+        <li><a href="https://instagram.com/iccycling" target="_blank">@iccycling</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Imperial College Cycling Club 2025. All rights reserved.</span>
+    <span>Designed & built by <a href="/iccc-hub/authors/frederik-beck/">Frederik Beck</a> and others at ICCC</span>
+    <a href="privacy.html">Privacy &amp; Legal</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FF6B00"/>
+      <stop offset="35%"  stop-color="#FF2D55"/>
+      <stop offset="100%" stop-color="#BF00FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="600" height="600" fill="#0a0a0a"/>
+
+  <!-- ICCC gradient text, centered -->
+  <text x="300" y="358"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="155"
+    letter-spacing="-8"
+    font-style="italic"
+    fill="url(#grad)">ICCC</text>
+
+</svg>

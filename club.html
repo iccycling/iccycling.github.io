@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Imperial College Cycling Club</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Imperial College Cycling Club">
+<meta property="og:title" content="About - Imperial College Cycling Club">
+<meta property="og:description" content="Imperial College Cycling Club — road, gravel, and mountain biking in London.">
+<meta property="og:url" content="https://iccycling.github.io/club.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://iccycling.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iccycling.github.io/og-image.jpg">
+
+
+<link rel="stylesheet" href="main.css">
+<style>
+
+  /* ── WHO WE ARE ── */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 64px;
+    align-items: start;
+  }
+  .who-text p {
+    font-size: 0.95rem; font-weight: 300; line-height: 1.85;
+    color: var(--gray); margin-bottom: 16px;
+  }
+  .who-text p:last-child { margin-bottom: 0; }
+  .who-text strong { font-weight: 500; color: var(--black); }
+
+  /* Small group photo — constrained so low-res doesn't show */
+  .group-photo-wrap {
+    position: relative;
+  }
+  .group-photo-wrap img {
+    width: 100%;
+    border-radius: 3px;
+    display: block;
+    /* Slight desaturation makes lower-res photos look intentional */
+    filter: saturate(0.92);
+  }
+  .group-photo-caption {
+    margin-top: 10px;
+    font-size: 0.72rem; font-weight: 400; letter-spacing: 0.06em;
+    color: var(--gray); text-align: center;
+  }
+
+  /* ── WHAT WE DO ── */
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .activity-card {
+    background: var(--white);
+    padding: 36px 32px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .activity-number {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--blue);
+  }
+  .activity-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.05rem; color: var(--black);
+  }
+  .activity-desc {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.65;
+    color: var(--gray);
+  }
+
+  /* ── PARTNERS ── */
+  .partners-row {
+    display: flex; align-items: center;
+    gap: 48px; flex-wrap: wrap;
+    padding: 48px 40px;
+    border-top: 1px solid var(--border);
+  }
+  .partners-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gray);
+    white-space: nowrap;
+  }
+  .partner-logo {
+    height: 28px; width: auto;
+    opacity: 0.45;
+    filter: grayscale(1);
+    transition: opacity 0.2s, filter 0.2s;
+  }
+  .partner-logo:hover { opacity: 0.85; filter: grayscale(0); }
+  a.partner-link { display: flex; align-items: center; }
+
+  /* ── JOIN ── */
+  .join-card {
+    background: var(--blue);
+    padding: 64px 40px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .join-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(28px, 4vw, 48px);
+    line-height: 1; color: var(--white);
+  }
+  .join-card p {
+    font-size: 0.92rem; font-weight: 300; line-height: 1.7;
+    color: rgba(255,255,255,0.6); margin-top: 12px; max-width: 380px;
+  }
+
+  /* ── ALUMNI ── */
+  .alumni-section {
+    background: var(--off);
+    border-top: 1px solid var(--border);
+  }
+  .alumni-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .alumni-text {
+    padding: 72px 64px 72px 40px;
+    border-right: 1px solid var(--border);
+  }
+  .alumni-text h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.05; color: var(--black); margin-bottom: 20px;
+  }
+  .alumni-text p {
+    font-size: 0.92rem; font-weight: 300; line-height: 1.8;
+    color: var(--gray); margin-bottom: 14px;
+  }
+  .alumni-text p:last-of-type { margin-bottom: 28px; }
+  .alumni-contact {
+    padding: 72px 40px 72px 64px;
+    display: flex; flex-direction: column; justify-content: center; gap: 20px;
+  }
+  .alumni-contact h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem; color: var(--black);
+    margin-bottom: 4px;
+  }
+  .alumni-contact p {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: var(--gray);
+  }
+  .alumni-reach {
+    display: flex; flex-direction: column; gap: 12px;
+    padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .alumni-reach a {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; font-weight: 400;
+    color: var(--blue); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .alumni-reach a:hover { opacity: 0.7; }
+
+  /* ── SUPPORT ── */
+  .support-section {
+    padding: 56px 40px;
+    border-top: 1px solid var(--border);
+  }
+  .support-inner {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .support-text {}
+  .support-text h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.15rem; color: var(--black);
+    margin-bottom: 8px;
+  }
+  .support-text p {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.7;
+    color: var(--gray); max-width: 520px;
+  }
+  .support-links {
+    display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .who-grid { grid-template-columns: 1fr; gap: 36px; }
+    .group-photo-wrap { max-width: 360px; }
+    .activities-grid { grid-template-columns: 1fr; }
+    .alumni-inner { grid-template-columns: 1fr; }
+    .alumni-text { padding: 48px 20px 32px; border-right: none; border-bottom: 1px solid var(--border); }
+    .alumni-contact { padding: 32px 20px 48px; }
+    .partners-row { padding: 36px 20px; gap: 28px; }
+    .join-card { padding: 48px 20px; }
+    .support-section { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ICCC.svg" alt="ICCC">
+  </a>
+  <ul class="nav-links">
+    <li><a href="road.html">Road</a></li>
+    <li><a href="offroad.html">MTB</a></li>
+    <li><a href="index.html#news">News</a></li>
+    <li><a href="club.html" class="active">About</a></li>
+  </ul>
+  <a href="club.html#join" class="nav-cta">Join</a>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer">
+  <ul>
+    <li><a href="road.html">Road Cycling</a></li>
+    <li><a href="offroad.html">Mountain Biking</a></li>
+    <li><a href="other.html">More Cycling</a></li>
+    <li><a href="index.html#news">News & Blog</a></li>
+    <li><a href="club.html" class="active">About</a></li>
+  </ul>
+  <a href="club.html#join" class="drawer-cta">Join the Club</a>
+</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+
+    <img class="page-hero-bg" src="images/IMG_3020.jpg" alt="ICCC">
+
+  
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Imperial College Cycling Club</div>
+    <h1 class="page-hero-title">About the Club</h1>
+    <p class="page-hero-sub">
+      Racing, exploring, commuting or just rolling — ICCC welcomes all riders, all levels, all year round.
+    </p>
+  </div>
+</section>
+
+
+<!-- WHO WE ARE -->
+<section class="content-section">
+  <span class="label">Who we are</span>
+  <div class="who-grid">
+
+    <div class="who-text">
+      <p>ICCC is a student-led cycling club at Imperial College London, affiliated with Imperial College Union. We ride road, trails, and everything in between — weekly group rides, weekend MTB trips, BUCS races, and social events throughout the year.</p>
+      <p>We're more than a racing club. We welcome commuters, bike packers, indoor cyclists, and anyone for whom cycling is part of life. If you have two wheels and a willingness to show up, you belong here.</p>
+      <p>The club is run entirely by students, which means it's shaped by whoever joins. If you want to organise a ride, plan a trip, or just find people to ride with in London — this is the place.</p>
+    </div>
+
+    <div class="group-photo-wrap">
+      <!--
+        Low-res group photo — kept small intentionally so resolution isn't an issue.
+        Replace src with your actual file name.
+      -->
+      <img src="images/Gruppe.jpeg" alt="ICCC members — a diverse group of cyclists">
+      <p class="group-photo-caption">ICCC members, 2024</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- WHAT WE DO -->
+<section class="content-section bg-off">
+  <div class="section-header">
+    <h2>What we do</h2>
+  </div>
+  <div class="activities-grid">
+
+    <div class="activity-card">
+      <div class="activity-number">01</div>
+      <div class="activity-title">Road Group Rides</div>
+      <p class="activity-desc">Weekly rides for all levels — Wednesday beginner laps at Richmond Park, and longer Sunday rides into Surrey, Windsor, and Kent.</p>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-number">02</div>
+      <div class="activity-title">Mountain Biking</div>
+      <p class="activity-desc">Regular trail rides at local spots and weekend trips to trail centres. No experience needed — just a bike and an appetite for adventure.</p>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-number">03</div>
+      <div class="activity-title">Racing</div>
+      <p class="activity-desc">We compete in BUCS and local events throughout the year. The club helps with transport and subsidised entry fees for members who want to race.</p>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-number">04</div>
+      <div class="activity-title">Strava Club</div>
+      <p class="activity-desc">Stay connected between rides. Share your routes, track your progress, and see what other members are doing throughout the week.</p>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-number">05</div>
+      <div class="activity-title">Club Kit</div>
+      <p class="activity-desc">Discounted road kit, MTB jerseys, and club hoodies — available to members each season. Keep an eye on the news for kit drop announcements.</p>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-number">06</div>
+      <div class="activity-title">Trips & Socials</div>
+      <p class="activity-desc">An annual summer trip abroad, social rides, and club events. The best parts of being in a club happen off the bike too.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PARTNERS -->
+<section class="content-section" style="padding-top: 0; padding-bottom: 0;">
+  <div class="partners-row">
+    <span class="partners-label">Partners & Affiliates</span>
+    <a href="https://www.imperial.ac.uk/" target="_blank" class="partner-link">
+      <img src="images/Imperial_College_London_new_logo.png" alt="Imperial College London" class="partner-logo">
+    </a>
+    <a href="https://www.imperialcollegeunion.org/" target="_blank" class="partner-link">
+      <img src="images/Imperial_College_Union_Logo.svg" alt="Imperial College Union" class="partner-logo">
+    </a>
+    <a href="https://www.imperial.ac.uk/sport/imperial-athletes/" target="_blank" class="partner-link">
+      <img src="images/IMPERIAL_ATHLETES_LOGO.webp" alt="Imperial Athletes" class="partner-logo">
+    </a>
+  </div>
+</section>
+
+
+<!-- JOIN -->
+<section class="join-card" id="join">
+  <div>
+    <h2>Join ICCC</h2>
+    <p>Membership is open to everyone at Imperial. Sign up through the Imperial College Union to get access to all rides, events, and the club group chat. Free to join — just show up.</p>
+  </div>
+  <a href="https://www.imperialcollegeunion.org/activities/a-to-z/cycling" target="_blank" class="btn-outline-white">Join via the Union →</a>
+</section>
+
+
+<!-- ALUMNI -->
+<section class="alumni-section" id="alumni">
+  <div class="alumni-inner">
+    <div class="alumni-text">
+      <span class="label">Alumni</span>
+      <h2>Once a rider,<br>always a rider.</h2>
+      <p>ICCC has been part of Imperial for years, and many of our alumni have gone on to keep cycling long after graduation — whether that's racing, bikepacking, or weekend rides with friends.</p>
+      <p>We don't have a formal alumni programme, but we'd love to stay in touch. Whether you want to share what you're up to, offer advice to current members, or just say hello — our inbox is always open.</p>
+      <a href="mailto:cycle@imperial.ac.uk" class="text-link">Get in touch →</a>
+    </div>
+    <div class="alumni-contact">
+      <div>
+        <h3>Stay connected</h3>
+        <p>Follow us on Instagram for club updates, ride highlights, and the occasional throwback.</p>
+      </div>
+      <div class="alumni-reach">
+        <a href="https://instagram.com/iccycling" target="_blank">
+          <span>@iccycling on Instagram</span>
+        </a>
+        <a href="mailto:cycle@imperial.ac.uk">
+          <span>cycle@imperial.ac.uk</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SUPPORT — subtle -->
+<section class="support-section" id="support">
+  <div class="support-inner">
+    <div class="support-text">
+      <h2>Support the Club</h2>
+      <p>ICCC is entirely student-run and member-funded. If you'd like to support us — whether as an individual donor or a company interested in sponsorship — we'd love to hear from you. Sponsors gain visibility through our kit, website, and events, while supporting an active student community at Imperial.</p>
+    </div>
+    <div class="support-links">
+      <a href="mailto:cycle@imperial.ac.uk?subject=Sponsorship%20enquiry" class="btn-blue">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">
+        <img src="images/ICCC-white.svg" alt="ICCC" style="height:24px; width:auto; opacity:0.85;">
+      </div>
+      <p class="footer-tagline">Imperial College Cycling Club — student-run. All levels welcome.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Ride</h4>
+      <ul>
+        <li><a href="road.html">Road Cycling</a></li>
+        <li><a href="offroad.html">Mountain Biking</a></li>
+        <li><a href="other.html">More Cycling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Club</h4>
+      <ul>
+        <li><a href="club.html">About</a></li>
+        <li><a href="club.html#join">Join</a></li>
+        <li><a href="club.html#alumni">Alumni</a></li>
+        <li><a href="club.html#support">Support Us</a></li>
+        <li><a href="/blog/news/">News & Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:cycle@imperial.ac.uk">cycle@imperial.ac.uk</a></li>
+        <li><a href="https://instagram.com/iccycling" target="_blank">@iccycling</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Imperial College Cycling Club 2025. All rights reserved.</span>
+    <span>Designed & built by <a href="/blog/authors/frederik-beck/">Frederik Beck</a> and others at ICCC</span>
+    <a href="privacy.html">Privacy & Legal</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
