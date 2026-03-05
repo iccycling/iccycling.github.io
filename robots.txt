@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iccycling.github.io/sitemap.xml
