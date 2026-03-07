@@ -481,6 +481,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   border-top: 1px solid var(--border);
   display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
 }
+.ig-icon { flex-shrink: 0; }
 .ig-handle {
   font-family: 'Syne', sans-serif;
   font-weight: 800; font-size: 1.5rem; color: var(--black);
@@ -489,6 +490,10 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-size: 0.88rem; font-weight: 300; color: var(--gray); margin-top: 4px;
 }
 .instagram .text-link { margin-left: auto; }
+
+@media (max-width: 600px) {
+  .ig-icon { display: none; }
+}
 
 /* ── FOOTER ── */
 footer {
