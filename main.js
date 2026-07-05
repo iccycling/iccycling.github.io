@@ -73,4 +73,17 @@
     });
   });
 
+/* ── WHATSAPP MODAL ── */
+  const waOverlay = document.getElementById('waOverlay');
+  const waTrigger = document.querySelector('[data-wa-trigger]');
+  const waClose   = document.querySelector('[data-wa-close]');
+
+  if (waOverlay && waTrigger) {
+    waTrigger.addEventListener('click', () => waOverlay.classList.add('open'));
+    waClose && waClose.addEventListener('click', () => waOverlay.classList.remove('open'));
+    waOverlay.addEventListener('click', (e) => {
+      if (e.target === waOverlay) waOverlay.classList.remove('open');
+    });
+  }
+
 })();

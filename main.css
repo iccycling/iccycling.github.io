@@ -532,6 +532,85 @@ footer {
 .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
 .footer-bottom a:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
 
+/* Footer social icons */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.footer-social a,
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+.footer-social a:hover,
+.footer-social-btn:hover { color: rgba(255,255,255,0.85); }
+.footer-social svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+.footer-contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-contact-line .line-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  fill: currentColor;
+  opacity: 0.8;
+}
+.footer-contact-line .ext-icon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  fill: currentColor;
+  opacity: 0.5;
+}
+
+/* WhatsApp popup */
+.wa-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+}
+.wa-modal-overlay.open { display: flex; }
+.wa-modal {
+  background: var(--white);
+  max-width: 320px;
+  padding: 32px 28px;
+  border-radius: 2px;
+  text-align: center;
+}
+.wa-modal p {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.6;
+  color: var(--gray); margin-bottom: 20px;
+}
+.wa-modal-close {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--blue); color: var(--white);
+  padding: 10px 24px; border: none; border-radius: 2px;
+  cursor: pointer; transition: background 0.2s;
+}
+.wa-modal-close:hover { background: var(--blue-mid); }
+
 /* ── PAGE CONTENT SECTIONS ── */
 
 /* Info grid: two-column text layout for subpages */
