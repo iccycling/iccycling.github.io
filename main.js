@@ -5,47 +5,34 @@
 
 (function () {
 
-  /* ── HIDE / SHOW NAV ON SCROLL ── */
-  const nav = document.querySelector('nav');
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-
-    // Always show nav when near top
-    if (current < 80) {
-      nav.classList.remove('nav-hidden');
-    } else if (current > lastScroll + 4) {
-      // Scrolling down — hide
-      nav.classList.add('nav-hidden');
-      closeDrawer();
-    } else if (lastScroll > current + 4) {
-      // Scrolling up — show
-      nav.classList.remove('nav-hidden');
-    }
-
-    lastScroll = current;
-  }, { passive: true });
-
-
   /* ── MOBILE DRAWER ── */
+  const nav       = document.querySelector('nav');
   const hamburger = document.querySelector('.nav-hamburger');
   const drawer    = document.querySelector('.nav-drawer');
 
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
     hamburger && hamburger.classList.remove('open');
+    hamburger && hamburger.setAttribute('aria-expanded', 'false');
   }
 
   if (hamburger && drawer) {
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-controls', drawer.id || 'nav-drawer');
+    if (!drawer.id) drawer.id = 'nav-drawer';
+    drawer.setAttribute('aria-hidden', 'true');
+
     hamburger.addEventListener('click', () => {
       const isOpen = drawer.classList.contains('open');
       if (isOpen) {
         closeDrawer();
       } else {
         drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
         hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
       }
     });
 
@@ -65,25 +52,64 @@
 
   /* ── FAQ ACCORDION ── */
   document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
       const item   = btn.parentElement;
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const q = i.querySelector('.faq-question');
+        q && q.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
-/* ── WHATSAPP MODAL ── */
-  const waOverlay = document.getElementById('waOverlay');
-  const waTrigger = document.querySelector('[data-wa-trigger]');
-  const waClose   = document.querySelector('[data-wa-close]');
 
-  if (waOverlay && waTrigger) {
-    waTrigger.addEventListener('click', () => waOverlay.classList.add('open'));
-    waClose && waClose.addEventListener('click', () => waOverlay.classList.remove('open'));
-    waOverlay.addEventListener('click', (e) => {
-      if (e.target === waOverlay) waOverlay.classList.remove('open');
-    });
-  }
+  /* ── WHATSAPP MODAL ── */
+const waOverlay  = document.getElementById('waOverlay');
+const waTriggers = document.querySelectorAll('[data-wa-trigger]');
+const waClose    = document.querySelector('[data-wa-close]');
+let lastTrigger = null;
+
+function openModal(e) {
+  lastTrigger = e.currentTarget;
+  waOverlay.classList.add('open');
+  waOverlay.setAttribute('aria-hidden', 'false');
+  waClose && waClose.focus();
+}
+
+function closeModal() {
+  waOverlay.classList.remove('open');
+  waOverlay.setAttribute('aria-hidden', 'true');
+  lastTrigger && lastTrigger.focus();
+}
+
+if (waOverlay && waTriggers.length) {
+  waOverlay.setAttribute('role', 'dialog');
+  waOverlay.setAttribute('aria-modal', 'true');
+  waOverlay.setAttribute('aria-hidden', 'true');
+
+  waTriggers.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  waClose?.addEventListener('click', closeModal);
+
+  waOverlay.addEventListener('click', e => {
+    if (e.target === waOverlay) closeModal();
+  });
+}
+
+  /* ── ESCAPE KEY closes drawer and modal ── */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (drawer && drawer.classList.contains('open')) closeDrawer();
+      if (waOverlay && waOverlay.classList.contains('open')) closeModal();
+    }
+  });
 
 })();

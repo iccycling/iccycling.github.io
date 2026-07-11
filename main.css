@@ -42,21 +42,42 @@ h1, h2, h3, h4 {
 
 /* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
   height: 60px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 40px;
+  background: transparent;
+}
+nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+}
+
+/* Static nav variant — for pages with no hero image behind it (e.g. privacy.html) */
+.nav--static {
+  position: relative;
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  transition: transform 0.3s ease;
 }
-nav.nav-hidden { transform: translateY(-100%); }
+.nav--static::after { display: none; }
+.nav--static .nav-logo { color: var(--black); }
+.nav--static .nav-links a {
+  color: var(--gray);
+  text-shadow: none;
+}
+.nav--static .nav-links a:hover,
+.nav--static .nav-links a.active { color: var(--black); }
+.nav--static .nav-hamburger span { background: var(--black); }
+.nav--static + .nav-drawer { position: fixed; top: 60px; }
 
 .nav-logo {
   font-family: 'Syne', sans-serif;
   font-weight: 800; font-size: 1.1rem; letter-spacing: 0.04em;
-  color: var(--black); text-decoration: none;
+  color: var(--white); text-decoration: none;
   display: flex; align-items: center;
 }
 .nav-logo img { height: 28px; width: auto; }
@@ -67,11 +88,12 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 .nav-links a {
   font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--gray);
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
   text-decoration: none; transition: color 0.2s;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--black); }
+.nav-links a.active { color: var(--white); }
 
 .nav-cta {
   font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
@@ -91,7 +113,7 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 .nav-hamburger span {
   display: block; height: 2px; width: 100%;
-  background: var(--black); border-radius: 2px;
+  background: var(--white); border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.2s;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -101,7 +123,7 @@ nav.nav-hidden { transform: translateY(-100%); }
 /* Mobile drawer */
 .nav-drawer {
   display: none;
-  position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+  position: absolute; top: 60px; left: 0; right: 0; z-index: 9;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   padding: 16px 20px 24px;
@@ -196,7 +218,6 @@ nav.nav-hidden { transform: translateY(-100%); }
 
 /* ── PAGE HERO (subpages) ── */
 .page-hero {
-  margin-top: 60px;
   position: relative;
   height: 52vh; min-height: 380px;
   overflow: hidden;
@@ -225,8 +246,9 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 
 .page-hero-eyebrow {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); margin-bottom: 12px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 12px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 .page-hero-title {
@@ -237,8 +259,9 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 
 .page-hero-sub {
-  font-size: 1rem; font-weight: 300; line-height: 1.65;
-  color: rgba(255,255,255,0.65);
+  font-size: 1.05rem; font-weight: 400; line-height: 1.65;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   max-width: 520px; margin-top: 16px;
 }
 
@@ -274,8 +297,9 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 
 .hero-eyebrow {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.6); margin-bottom: 14px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 14px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 .hero-title {
@@ -291,9 +315,10 @@ nav.nav-hidden { transform: translateY(-100%); }
 }
 
 .hero-desc {
-  font-size: 0.9rem; font-weight: 300; line-height: 1.65;
-  color: rgba(255,255,255,0.7);
-  max-width: 300px; text-align: right;
+  font-size: 1.05rem; font-weight: 400; line-height: 1.65;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  max-width: 320px; text-align: right;
 }
 
 .hero-scroll-line {
@@ -454,9 +479,14 @@ nav.nav-hidden { transform: translateY(-100%); }
 .nb-blog-featured .nb-blog-title { font-size: 1.1rem; }
 .nb-blog-featured .nb-blog-excerpt { display: block; }
 
-.nb-blog-tag {
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--blue);
+/* ── TAGS — same style as iccc-hub, for the fetched news/blog widget ── */
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.nb-news-item .tag-row, .nb-blog-card .tag-row { margin-bottom: 0; }
+.tag-pill {
+  display: inline-block;
+  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue); background: var(--blue-lt);
+  padding: 4px 11px; border-radius: 20px;
 }
 .nb-blog-title {
   font-family: 'Syne', sans-serif;
@@ -470,11 +500,6 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-size: 0.75rem; color: var(--gray); margin-top: auto; padding-top: 8px;
 }
 
-.news-date {
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--gray);
-}
-
 /* ── INSTAGRAM ── */
 .instagram {
   padding: 56px 40px; background: var(--off);
@@ -482,6 +507,26 @@ nav.nav-hidden { transform: translateY(-100%); }
   display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
 }
 .ig-icon { flex-shrink: 0; }
+
+/* ── DISCIPLINE CROSS-LINK BAND (mirrors .instagram band) ── */
+.disc-cross-link {
+  padding: 56px 40px; background: var(--white);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+}
+.dcl-icon { flex-shrink: 0; opacity: 0.15; }
+.dcl-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.5rem; color: var(--black);
+}
+.dcl-sub {
+  font-size: 0.9rem; font-weight: 300; color: var(--gray); margin-top: 4px;
+}
+.disc-cross-link .text-link { margin-left: auto; }
+@media (max-width: 640px) {
+  .disc-cross-link { padding: 40px 20px; }
+  .disc-cross-link .text-link { margin-left: 0; }
+}
 .ig-handle {
   font-family: 'Syne', sans-serif;
   font-weight: 800; font-size: 1.5rem; color: var(--black);
@@ -500,39 +545,6 @@ footer {
   background: var(--black);
   padding: 56px 40px 32px;
 }
-.footer-top {
-  display: flex; gap: 64px; flex-wrap: wrap;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding-bottom: 40px; margin-bottom: 28px;
-}
-.footer-brand-name {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 1rem; letter-spacing: 0.04em;
-  color: var(--white); margin-bottom: 10px;
-}
-.footer-brand-name .slash { color: var(--blue-mid); }
-.footer-tagline {
-  font-size: 0.83rem; font-weight: 300; line-height: 1.6;
-  color: rgba(255,255,255,0.3); max-width: 200px;
-}
-.footer-col h4 {
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.35); margin-bottom: 14px;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-col a {
-  font-size: 0.85rem; font-weight: 300;
-  color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
-}
-.footer-col a:hover { color: rgba(255,255,255,0.85); }
-.footer-bottom {
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  font-size: 0.75rem; color: rgba(255,255,255,0.2);
-}
-.footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
-.footer-bottom a:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
-
-/* Footer social icons */
 .footer-social {
   display: flex;
   align-items: center;
@@ -610,6 +622,37 @@ footer {
   cursor: pointer; transition: background 0.2s;
 }
 .wa-modal-close:hover { background: var(--blue-mid); }
+.footer-top {
+  display: flex; gap: 64px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding-bottom: 40px; margin-bottom: 28px;
+}
+.footer-brand-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1rem; letter-spacing: 0.04em;
+  color: var(--white); margin-bottom: 10px;
+}
+.footer-brand-name .slash { color: var(--blue-mid); }
+.footer-tagline {
+  font-size: 0.83rem; font-weight: 300; line-height: 1.6;
+  color: rgba(255,255,255,0.3); max-width: 200px;
+}
+.footer-col h4 {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col a {
+  font-size: 0.85rem; font-weight: 300;
+  color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.85); }
+.footer-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 0.75rem; color: rgba(255,255,255,0.2);
+}
+.footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
 
 /* ── PAGE CONTENT SECTIONS ── */
 
@@ -763,6 +806,8 @@ footer {
   .nav-cta   { display: none; }
   .nav-hamburger { display: flex; }
   .nav-drawer    { display: block; }
+
+  .hero { min-height: 0; height: max(min(100vh, calc(100vw * 4 / 3)), 520px); }
 
   .hero-content { bottom: 40px; left: 20px; right: 20px; flex-direction: column; align-items: flex-start; }
   .hero-right { align-items: flex-start; }

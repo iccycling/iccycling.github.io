@@ -11,15 +11,17 @@ async function loadFeed() {
   }
 }
 
+function tagRow(tags) {
+  if (!tags || !tags.length) return '';
+  return `<div class="tag-row">${tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div>`;
+}
+
 function renderNews(items) {
   const el = document.getElementById('nb-news-list');
   if (!el) return;
   if (!items.length) { el.innerHTML = '<p>No news at the moment.</p>'; return; }
   el.innerHTML = items.map(item => {
-    const dateLabel = item.eventDate
-      ? `<span class="news-date event">${item.eventDate}</span>`
-      : `<span class="news-date">${item.dateLabel}</span>`;
-    return `<a href="${item.url}" class="nb-news-item">${dateLabel}<span class="nb-news-title">${item.title}</span></a>`;
+    return `<a href="${item.url}" class="nb-news-item">${tagRow(item.tags)}<span class="nb-news-title">${item.title}</span></a>`;
   }).join('');
 }
 
@@ -29,7 +31,7 @@ function renderPosts(items) {
   if (!items.length) { el.innerHTML = '<p>No posts yet.</p>'; return; }
   el.innerHTML = items.map((item, i) => `
     <a href="${item.url}" class="nb-blog-card${i === 0 ? ' nb-blog-featured' : ''}">
-      <div class="nb-blog-tag">${item.tag || ''}</div>
+      ${tagRow(item.tags)}
       <div class="nb-blog-title">${item.title}</div>
       <p class="nb-blog-excerpt">${item.excerpt || ''}</p>
       <div class="nb-blog-meta">${item.author}${item.readingTime ? ' · ' + item.readingTime + ' min read' : ''}</div>
