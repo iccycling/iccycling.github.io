@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 439.60001 109.2"
+   width="439.60001"
+   height="109.2"
+   id="svg1"
+   sodipodi:docname="ictri.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.6234375"
+     inkscape:cx="222.95739"
+     inkscape:cy="157.99499"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <style
+     id="style1">
+		.s0 { fill: #000000 } 
+	</style>
+  <path
+     id="IC TRI"
+     class="s0"
+     aria-label="IC TRI"
+     d="M 29.7,107.1 H 0 V 2.1 h 29.7 z m 73.5,2.1 q -12.4,0 -23.1,-3.9 Q 69.7,101.2 61.8,93.9 54.1,86.6 49.7,76.7 45.5,66.6 45.5,54.6 45.5,42.6 49.7,32.7 54.1,22.6 61.8,15.5 69.7,8 80.1,4 90.8,0 103.3,0 q 14.5,0 25.9,5.1 11.5,5 19.1,14.7 l -18.8,17.1 q -5,-6 -11.2,-9.1 -6.1,-3.3 -13.6,-3.3 -6.5,0 -11.8,2.2 -5.3,2.1 -9.3,6.1 -3.8,4 -6,9.7 -2.1,5.4 -2.1,12.1 0,6.7 2.1,12.3 2.2,5.5 6,9.6 4,3.9 9.3,6.2 5.3,2 11.8,2 7.5,0 13.6,-3.1 6.2,-3.3 11.2,-9.3 l 18.8,17.1 q -7.6,9.5 -19.1,14.7 -11.4,5.1 -26,5.1 z m 152.7,-2.1 H 226.2 V 25.6 H 194 V 2.1 h 94.1 v 23.5 h -32.2 z m 72.8,0 H 299 V 2.1 h 46.8 q 23,0 35.3,10.5 12.5,10.3 12.5,28.3 0,12 -5.7,20.6 -5.7,8.6 -16.2,13.2 -10.4,4.6 -24.9,4.6 h -31.4 l 13.3,-12.6 z m 67,0 h -31.9 l -26,-38.2 h 31.6 z M 328.6,11.9 V 70 L 315.4,56.3 h 29.7 q 9.3,0 13.8,-4.1 4.7,-4.1 4.7,-11.2 0,-7.3 -4.7,-11.3 -4.5,-4.1 -13.8,-4.1 h -29.7 z m 111,95.3 H 409.9 V 2.2 h 29.7 z"
+     style="fill:#ffffff;fill-opacity:1" />
+</svg>
