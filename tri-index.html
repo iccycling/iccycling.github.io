@@ -19,89 +19,42 @@
 
 <link rel="stylesheet" href="main.css">
 
-<!-- Archivo für Überschriften — Prototyp lädt via Google Fonts;
-     für die finale Seite bitte wie Syne/Inter selbst hosten (fonts/-Ordner + @font-face). -->
+<!-- Fonts: Syne/Inter wie im ICCC-Original selbst gehostet + Archivo nur für den Hero-Schriftzug -->
+<link rel="preload" href="fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/syne-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap" rel="stylesheet">
 
 <!-- ============================================================
      TRI-SPECIFIC OVERRIDES (inline, per Prototyp-Wunsch)
-     — eigener Blauton statt ICCC-Blau
-     — Überschriften: Archivo 900 statt Syne
-     — eigene Text-Wortmarke "IC TRI" statt Logo-SVG
+     — Akzentfarbe: gedecktes Rot statt ICCC-Blau
+     — nur der Hero-Schriftzug läuft in Archivo 900, sonst überall Syne
+     — eigenes Logo (images/ictri.svg), sonst 1:1 ICCC-Konzept
      ============================================================ -->
 <style>
   :root {
-    /* Drei Akzentfarben für Swim/Bike/Run — nur für kleine Elemente
-       (Buttons, Links, Zahlen, Nav-Highlights). Große Flächen bleiben dunkel. */
-    --blue:     #2F6FED;   /* Swim / allgemeiner Akzent */
-    --blue-mid: #5B8CFF;   /* Hover-Variante */
-    --blue-lt:  #E9F0FF;   /* helle Tint-Variante (Tags, Hover auf Weiß) */
-    --acc-bike: #E8A33D;   /* Bike-Akzent */
-    --acc-run:  #E4572E;   /* Run-Akzent */
-    --dark-section: #1A1A1A; /* "Asphalt" — für .join und Footer, statt reinem Schwarz */
+    /* Gedecktes, klassisches Rot (angelehnt an das Gules im Royal Coat of Arms),
+       bewusst nicht knallig — genug Kontrast auf Weiß und auf Schwarz. 
+    --blue:     #8C1F2F;
+    --blue-mid: #A9313F;
+    --blue-lt:  #F5E4E6;*/
   }
 
-  /* .join und Footer laufen in main.css über var(--blue) bzw. var(--black) —
-     hier beide explizit auf denselben "Asphalt"-Ton pinnen, damit sie sich exakt gleichen */
-  .join, footer { background: var(--dark-section); }
-
-  /* Kacheln bleiben inhaltlich gleich, bekommen aber je Disziplin
-     eine eigene Akzentfarbe für Nummer + "Learn more"-Pfeil */
-  .disc-bike .disc-number, .disc-bike .disc-arrow { color: var(--acc-bike); }
-  .disc-run  .disc-number, .disc-run  .disc-arrow { color: var(--acc-run); }
-
-  .hero-title { text-transform: uppercase; }
-
-  /* main.css setzt Syne über spezifischere Klassenselektoren als h1–h4,
-     daher hier jede dieser Klassen explizit auf Archivo umstellen */
-  h1, h2, h3, h4,
-  .nav-logo,
-  .page-hero-title,
-  .hero-title,
-  .disc-title,
-  .stat-n,
-  .nb-news-title,
-  .nb-blog-title,
-  .dcl-title,
-  .ig-handle,
-  .footer-brand-name,
-  .faq-question {
+  /* Hero-Schriftzug wirkt wie eine Wortmarke — dort Archivo statt Syne,
+     der Rest der Seite bleibt bei main.css's Syne. */
+  .hero-title {
+    text-transform: uppercase;
     font-family: 'Archivo', sans-serif;
     font-weight: 900;
   }
 
-  /* Wasserzeichen im About-Bild: "ICCC" → "ICTRI" + Schrift/Farbe angleichen */
+  /* Wasserzeichen im About-Bild: "ICCC" → "ICTRI" (Schrift bleibt main.css-Syne) */
   .about-image-wrap::after {
     content: 'ICTRI';
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    color: rgba(47,111,237,0.08);
+    color: rgba(140,31,47,0.08);
   }
-
-  /* Top-Nav liegt über dem Hero-Foto — volltonige Akzentfarbe als Text hätte
-     dort zu wenig Kontrast. Stattdessen: Text bleibt hell, nur ein farbiger
-     Unterstrich markiert die Disziplin. */
-  .nav-links .nav-acc-swim,
-  .nav-links .nav-acc-bike,
-  .nav-links .nav-acc-run {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 6px;
-  }
-  .nav-links .nav-acc-swim { text-decoration-color: var(--blue); }
-  .nav-links .nav-acc-bike { text-decoration-color: var(--acc-bike); }
-  .nav-links .nav-acc-run  { text-decoration-color: var(--acc-run); }
-
-  /* Drawer (heller Hintergrund) und Footer (satte Fläche) haben genug Kontrast
-     für volltonigen Text — dort bleibt die Akzentfarbe direkt am Text. */
-  .nav-drawer .nav-acc-swim { color: var(--blue); }
-  .nav-drawer .nav-acc-bike { color: var(--acc-bike); }
-  .nav-drawer .nav-acc-run  { color: var(--acc-run); }
-  .footer-col .nav-acc-swim { color: var(--blue); }
-  .footer-col .nav-acc-bike { color: var(--acc-bike); }
-  .footer-col .nav-acc-run  { color: var(--acc-run); }
 </style>
 </head>
 <body>
@@ -114,11 +67,10 @@
       <img src="images/ictri.svg" alt="ICTRI">
     </a>
     <ul class="nav-links">
-      <li><a href="swim.html" class="nav-acc-swim">Swim</a></li>
-      <li><a href="bike.html" class="nav-acc-bike">Bike</a></li>
-      <li><a href="run.html" class="nav-acc-run">Run</a></li>
-      <li><a href="competitions.html">Competitions</a></li>
-      <li><a href="tri-index.html#news">News</a></li>
+      <li><a href="swim.html">Swim</a></li>
+      <li><a href="bike.html">Bike</a></li>
+      <li><a href="run.html">Run</a></li>
+      <li><a href="tri-index.html#news">News & Blog</a></li>
       <li><a href="tri-club.html">About</a></li>
     </ul>
     <a href="tri-club.html#join" class="nav-cta">Join</a>
@@ -128,10 +80,9 @@
   </nav>
   <div class="nav-drawer">
     <ul>
-      <li><a href="swim.html" class="nav-acc-swim">Swim</a></li>
-      <li><a href="bike.html" class="nav-acc-bike">Bike</a></li>
-      <li><a href="run.html" class="nav-acc-run">Run</a></li>
-      <li><a href="competitions.html">Competitions</a></li>
+      <li><a href="swim.html">Swim</a></li>
+      <li><a href="bike.html">Bike</a></li>
+      <li><a href="run.html">Run</a></li>
       <li><a href="tri-index.html#news">News & Blog</a></li>
       <li><a href="tri-club.html">About</a></li>
     </ul>
@@ -161,19 +112,19 @@
 
 <!-- DISCIPLINES -->
 <div class="disciplines">
-  <a class="disc-item disc-swim" href="swim.html">
+  <a class="disc-item" href="swim.html">
     <div class="disc-number">01</div>
     <div class="disc-title">Swim</div>
     <p class="disc-desc">Weekly pool sessions with structured sets for every level. Technique-focused, coached, and open to non-swimmers too.</p>
     <span class="disc-arrow">Learn more</span>
   </a>
-  <a class="disc-item disc-bike" href="bike.html">
+  <a class="disc-item" href="bike.html">
     <div class="disc-number">02</div>
     <div class="disc-title">Bike</div>
     <p class="disc-desc">Group rides and turbo sessions to build endurance and bike handling, from your first ride to race pace.</p>
     <span class="disc-arrow">Learn more</span>
   </a>
-  <a class="disc-item disc-run" href="run.html">
+  <a class="disc-item" href="run.html">
     <div class="disc-number">03</div>
     <div class="disc-title">Run</div>
     <p class="disc-desc">Track and river-path sessions covering speed, endurance, and brick runs off the bike.</p>
@@ -185,7 +136,7 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-image-wrap">
-    <img src="images/4.jpg" alt="ICTRI Group Session">
+    <img src="images/4alt.jpg" alt="ICTRI Group Session">
   </div>
   <div class="about-content">
     <span class="label">About the Club</span>
@@ -266,10 +217,9 @@
     </div>
     <div class="footer-col">
       <ul>
-        <li><a href="swim.html" class="nav-acc-swim">Swim</a></li>
-        <li><a href="bike.html" class="nav-acc-bike">Bike</a></li>
-        <li><a href="run.html" class="nav-acc-run">Run</a></li>
-        <li><a href="competitions.html">Competitions</a></li>
+        <li><a href="swim.html">Swim</a></li>
+        <li><a href="bike.html">Bike</a></li>
+        <li><a href="run.html">Run</a></li>
       </ul>
     </div>
     <div class="footer-col">
