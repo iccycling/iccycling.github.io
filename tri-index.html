@@ -31,7 +31,7 @@
      TRI-SPECIFIC OVERRIDES (inline, per Prototyp-Wunsch)
      — Akzentfarbe: gedecktes Rot statt ICCC-Blau
      — nur der Hero-Schriftzug läuft in Archivo 900, sonst überall Syne
-     — eigenes Logo (images/ictri.svg), sonst 1:1 ICCC-Konzept
+     — eigenes Logo (images/ictri-archivo.svg), sonst 1:1 ICCC-Konzept
      ============================================================ -->
 <style>
   :root {
@@ -39,8 +39,28 @@
        bewusst nicht knallig — genug Kontrast auf Weiß und auf Schwarz. 
     --blue:     #8C1F2F;
     --blue-mid: #A9313F;
-    --blue-lt:  #F5E4E6;*/
+    --blue-lt:  #F5E4E6;*//* Ironman-inspiriert: Rot als alleiniger Akzent (Text/Icons/Zahlen). */
+    --blue:      #CE0E2D;
+    --blue-mid:  #A80B24;
+    --blue-lt:   #FBE4E7;   /* helle Tint-Fläche für Tag-Pills */
+
+    /* Graue Fläche für Buttons/Join-Band statt Akzentfarbe. */
+    --fill:       #808086;
+    --fill-hover: #6B6B70;
   }
+
+  /* Buttons + Join-Band laufen über die graue Fläche statt Rot;
+     main.css's weißer Standardtext bleibt einfach so, kein Override nötig. */
+  .nav-cta, .nav-drawer .drawer-cta, .wa-modal-close, .join {
+    background: var(--fill);
+  }
+  .nav-cta:hover, .nav-drawer .drawer-cta:hover, .wa-modal-close:hover {
+    background: var(--fill-hover);
+  }
+
+  /* Ausnahme: nur der "Join"-Button in der Top-Nav bleibt rot als kleiner Akzent. */
+  .nav-cta { background: var(--blue); }
+  .nav-cta:hover { background: var(--blue-mid); }
 
   /* Hero-Schriftzug wirkt wie eine Wortmarke — dort Archivo statt Syne,
      der Rest der Seite bleibt bei main.css's Syne. */
@@ -64,7 +84,7 @@
   <!-- NAV -->
   <nav>
     <a href="tri-index.html" class="nav-logo">
-      <img src="images/ictri.svg" alt="ICTRI">
+      <img src="images/ictri-archivo.svg" alt="ICTRI">
     </a>
     <ul class="nav-links">
       <li><a href="swim.html">Swim</a></li>
@@ -140,7 +160,7 @@
   </div>
   <div class="about-content">
     <span class="label">About the Club</span>
-    <h2>SWIM.<br>BIKE.<br>RUN.</h2>
+    <h2>Train.<br>Compete.<br>Together.</h2>
     <p>ICTRI is a student-led community at Imperial College London. Whether you're chasing a podium or your first triathlon, there's a place for you. Powered by the Student Union. <a href="tri-club.html" style="color: var(--gray); text-decoration: underline; text-underline-offset: 2px;">Learn more about the club →</a></p>
     <div class="stats">
       <div>
@@ -199,10 +219,10 @@
 <div class="instagram">
   <img class="ig-icon" src="images/instagram.svg" width="44" height="44" style="opacity:0.15" alt="Instagram">
   <div>
-    <div class="ig-handle">@ictriathlon</div>
+    <div class="ig-handle">@imperialtriathlon</div>
     <div class="ig-sub">Session updates, race results, and club highlights.</div>
   </div>
-  <a href="https://www.instagram.com/ictriathlon" target="_blank" rel="noopener" class="text-link">Follow on Instagram →</a>
+  <a href="https://www.instagram.com/imperialtriathlon" target="_blank" rel="noopener" class="text-link">Follow on Instagram →</a>
 </div>
 
 
@@ -211,7 +231,7 @@
   <div class="footer-top">
     <div>
       <div class="footer-brand-name">
-        <img src="images/ictri.svg" alt="ICTRI" style="height:24px; width:auto; opacity:0.85;">
+        <img src="images/ictri-archivo.svg" alt="ICTRI" style="height:24px; width:auto; opacity:0.85;">
       </div>
       <p class="footer-tagline">Imperial College Triathlon Club — student-run. All levels welcome.</p>
     </div>
